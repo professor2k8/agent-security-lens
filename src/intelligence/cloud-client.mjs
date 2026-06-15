@@ -26,16 +26,12 @@ function splitApiUrls(value) {
 }
 
 export function apiEndpoints() {
-  const region = (env("ASL_API_REGION") || "auto").toLowerCase();
   const primary = normalizeApiUrl(env("ASL_API_URL"));
-  const china = normalizeApiUrl(env("ASL_CN_API_URL"));
   const explicitList = splitApiUrls(env("ASL_API_URLS"));
 
   const ordered = [];
-  if (region === "cn" && china) ordered.push(china);
   ordered.push(...explicitList);
   if (primary) ordered.push(primary);
-  if (region !== "cn" && china) ordered.push(china);
   ordered.push(DEFAULT_API_URL);
 
   return [...new Set(ordered)];

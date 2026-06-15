@@ -26,11 +26,9 @@ The public MCP uses online intelligence by default:
 ```text
 ASL_API_URL=https://api.agentsecuritylens.com
 ASL_API_URLS=https://api.agentsecuritylens.com
-ASL_CN_API_URL=
-ASL_API_REGION=auto
 ```
 
-`ASL_API_URLS` may contain multiple comma-separated endpoints. `ASL_CN_API_URL` is optional and is not configured in v0.1.0.
+`ASL_API_URLS` may contain multiple comma-separated endpoints. The MCP tries them in order and falls back automatically.
 
 ## Agent Policy
 

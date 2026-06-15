@@ -2,13 +2,13 @@
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
   "version": "0.1.0",
-  "generated_at": "2026-06-15T08:48:15.506Z",
+  "generated_at": "2026-06-15T10:12:12.250Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
       "path": ".env.example",
-      "bytes": 377,
-      "sha256": "711c976cc8b0b65ff98669317307560df09b15b5460b5112d0a9f31007eb23df"
+      "bytes": 270,
+      "sha256": "5a933f6d2a954f7438b89418631425bdcb0d2f5d53acc129a221282c976caef3"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug.yml",
@@ -72,8 +72,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4938,
-      "sha256": "64e2662fe12f05dc019b78bafbc1042f2150cb48d49d86c7cac90aed657e8794"
+      "bytes": 4898,
+      "sha256": "51fb4da9a0888d824d9a62366eb303987daedcef90aa8cd4a810847513852053"
     },
     {
       "path": "SECURITY.md",
@@ -92,8 +92,8 @@
     },
     {
       "path": "data/ecosystems/agent-candidates.json",
-      "bytes": 7954,
-      "sha256": "2f85806f386c6c736375e9a7a5b705073ae62e207c9e7c2d239d067c329290b8"
+      "bytes": 7881,
+      "sha256": "3f47fd93d89d1227195ba1b7cd2b604e5cff6a7f9e443ac3c58bef699190e0cf"
     },
     {
       "path": "data/intelligence/components.json",
@@ -337,8 +337,8 @@
     },
     {
       "path": "src/intelligence/cloud-client.mjs",
-      "bytes": 7707,
-      "sha256": "f280ee80c1e1f7db4b155847fcfb3a672f0848739122cd62fdbadda63ddb099a"
+      "bytes": 7479,
+      "sha256": "b8541e1cab43ccac3a7de16b7402c82108b0b113d4834499a0913f71750a6f33"
     },
     {
       "path": "src/intelligence/component-intelligence.mjs",
