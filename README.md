@@ -24,8 +24,8 @@ Node.js 20 or newer is required.
 The public MCP uses online intelligence by default:
 
 ```text
-ASL_API_URL=https://api.agentsecuritylens.com
-ASL_API_URLS=https://api.agentsecuritylens.com
+ASL_API_URL=https://agentsecuritylens-api.agentsecuritylens.workers.dev
+ASL_API_URLS=https://agentsecuritylens-api.agentsecuritylens.workers.dev
 ```
 
 `ASL_API_URLS` may contain multiple comma-separated endpoints. The MCP tries them in order and falls back automatically.

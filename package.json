@@ -1,6 +1,6 @@
 {
   "name": "agent-security-lens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "mcpName": "io.github.professor2k8/agent-security-lens",
   "description": "Agent-facing security MCP that queries ASL intelligence before autonomous agents install tools.",

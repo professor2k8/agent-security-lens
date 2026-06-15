@@ -1,4 +1,4 @@
-const DEFAULT_API_URL = "https://api.agentsecuritylens.com";
+const DEFAULT_API_URL = "https://agentsecuritylens-api.agentsecuritylens.workers.dev";
 const DEFAULT_TIMEOUT_MS = 3500;
 
 const SECRET_PATTERNS = [

@@ -1,14 +1,14 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.0",
-  "generated_at": "2026-06-15T10:17:03.672Z",
+  "version": "0.1.1",
+  "generated_at": "2026-06-15T14:53:25.682Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
       "path": ".env.example",
-      "bytes": 270,
-      "sha256": "5a933f6d2a954f7438b89418631425bdcb0d2f5d53acc129a221282c976caef3"
+      "bytes": 322,
+      "sha256": "6a920a289e9b1c900fceeee7ba65a1c3518b61dd0e8ecedda8703219d7e6733a"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug.yml",
@@ -37,8 +37,8 @@
     },
     {
       "path": ".mcp/server.json",
-      "bytes": 1261,
-      "sha256": "b8bd6fabc24bbe8bec904d4093c7506574c97ad5d8c344917144934904feba26"
+      "bytes": 1287,
+      "sha256": "8a872855f7e05655ca73c60a14fa6cc1d633ff9676284316de70c0a45cb9b824"
     },
     {
       "path": ".npmignore",
@@ -47,8 +47,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 583,
-      "sha256": "8a2b684447e6adc75d860fd962802d685329e110d359a6e6ca0045b2e12fd1db"
+      "bytes": 892,
+      "sha256": "590336c3cfb72e2439b6d6c13fb640c5a937336a66003d0f8b0effd80f7084c1"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -72,8 +72,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4898,
-      "sha256": "51fb4da9a0888d824d9a62366eb303987daedcef90aa8cd4a810847513852053"
+      "bytes": 4950,
+      "sha256": "04eb18598c417556f09c0672b6642ba84190fa6a09aaae83c686ae1aa45e4556"
     },
     {
       "path": "SECURITY.md",
@@ -178,7 +178,7 @@
     {
       "path": "package.json",
       "bytes": 1973,
-      "sha256": "1f7527425a0c1c55eaec1a42ec99a7084abb7771453c38246187ef1362243ed0"
+      "sha256": "c151b9873a883b6390d206b5e85b6b6e104aa1f30594d1c02deea390c6545780"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -307,8 +307,8 @@
     },
     {
       "path": "server.json",
-      "bytes": 1261,
-      "sha256": "b8bd6fabc24bbe8bec904d4093c7506574c97ad5d8c344917144934904feba26"
+      "bytes": 1287,
+      "sha256": "8a872855f7e05655ca73c60a14fa6cc1d633ff9676284316de70c0a45cb9b824"
     },
     {
       "path": "src/assessment/assess.mjs",
@@ -337,8 +337,8 @@
     },
     {
       "path": "src/intelligence/cloud-client.mjs",
-      "bytes": 7479,
-      "sha256": "b8541e1cab43ccac3a7de16b7402c82108b0b113d4834499a0913f71750a6f33"
+      "bytes": 7505,
+      "sha256": "0878d7a3efdccd5fc788034f08d25712fe52b4c2107bf23d697bd961c0e6bfbb"
     },
     {
       "path": "src/intelligence/component-intelligence.mjs",
@@ -357,8 +357,8 @@
     },
     {
       "path": "src/intelligence/safety-score-v0.2.mjs",
-      "bytes": 11957,
-      "sha256": "9a9b302826d180e073be7bb98bcd506b5bb2cd430e480ee32d36838074b2b101"
+      "bytes": 12015,
+      "sha256": "f0c9f7b816403034c54ca0b86ae6d523102e209cabd10075a0cf4e159a633c16"
     },
     {
       "path": "src/observations/json-observations.mjs",

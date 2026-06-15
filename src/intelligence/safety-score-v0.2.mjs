@@ -70,7 +70,8 @@ function unique(values = []) {
 }
 
 function evidenceGroups(known = {}) {
-  return new Map((known?.evidence || []).map((item) => [item.kind, item]));
+  const evidence = Array.isArray(known?.evidence) ? known.evidence : [];
+  return new Map(evidence.map((item) => [item.kind, item]));
 }
 
 function sourceRecords(known = {}) {

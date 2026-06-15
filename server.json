@@ -8,12 +8,12 @@
     "url": "https://github.com/professor2k8/agent-security-lens",
     "source": "github"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "agent-security-lens",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": {
         "type": "stdio"
       },
@@ -22,7 +22,7 @@
           "name": "ASL_API_URL",
           "description": "AgentSecurityLens Cloud Intelligence API URL.",
           "isRequired": false,
-          "default": "https://api.agentsecuritylens.com"
+          "default": "https://agentsecuritylens-api.agentsecuritylens.workers.dev"
         },
         {
           "name": "ASL_API_KEY",
