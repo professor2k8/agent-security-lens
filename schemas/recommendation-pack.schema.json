@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/recommendation-pack.schema.json",
+  "title": "AgentSecurityLens Recommendation Pack",
+  "type": "object",
+  "required": ["id", "version", "status", "recommendations"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "experimental", "active", "deprecated", "archived"]
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "type",
+          "status",
+          "source",
+          "confidence",
+          "rank",
+          "applies_to",
+          "recommended_actions",
+          "recommended_alternatives",
+          "agent_instruction",
+          "rollback_note"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "title": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["replacement", "configuration", "credential", "workflow", "review"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["candidate", "draft", "experimental", "active", "deprecated", "archived"]
+          },
+          "source": { "type": "string" },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "rank": { "type": "integer" },
+          "applies_to": {
+            "type": "object",
+            "properties": {
+              "rule_ids": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "categories": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "permissions_any": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "permissions_all": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "profile_ids": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          },
+          "recommended_actions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "recommended_alternatives": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "agent_instruction": { "type": "string" },
+          "one_step_commands": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["title", "command", "platform", "requires_confirmation"],
+              "properties": {
+                "title": { "type": "string" },
+                "command": { "type": "string" },
+                "platform": { "type": "string" },
+                "requires_confirmation": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "rollback_note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

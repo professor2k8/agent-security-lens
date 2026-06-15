@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/agent-install-decision.schema.json",
+  "title": "AgentSecurityLens Agent Install Decision",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "schema_id",
+    "service",
+    "result_type",
+    "component",
+    "decision",
+    "trust_score",
+    "safety_assessment",
+    "score_breakdown",
+    "risk_level",
+    "risk_signals",
+    "required_user_confirmation",
+    "safe_install_plan",
+    "alternatives",
+    "recommended_alternatives",
+    "alternative_coverage",
+    "next_action",
+    "one_step_action",
+    "agent_decision_contract",
+    "agent_actions",
+    "agent_instruction",
+    "intelligence_coverage"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "schema_id": { "type": "string" },
+    "service": { "const": "AgentSecurityLens" },
+    "result_type": { "const": "agent_install_decision" },
+    "component": {
+      "type": "object",
+      "required": ["known", "id", "name", "type", "source_url"],
+      "properties": {
+        "known": { "type": "boolean" },
+        "reviewed": { "type": "boolean" },
+        "strict_reviewed": { "type": "boolean" },
+        "curated_baseline": { "type": "boolean" },
+        "cataloged": { "type": "boolean" },
+        "intelligence_state": {
+          "type": "string",
+          "enum": ["strict_reviewed", "curated_baseline", "monitored", "candidate", "unknown"]
+        },
+        "id": { "type": ["string", "null"] },
+        "name": { "type": ["string", "null"] },
+        "type": {
+          "type": "string",
+          "enum": ["agent", "agent-framework", "mcp", "skill", "tool", "prompt", "prompt-bundle", "workflow", "memory", "unknown"]
+        },
+        "source_url": { "type": ["string", "null"] },
+        "full_name": { "type": ["string", "null"] },
+        "stars": { "type": ["integer", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["allow", "allow_with_restrictions", "ask_user", "avoid"]
+    },
+    "trust_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "safety_assessment": {
+      "type": "object",
+      "required": [
+        "standard",
+        "model_version",
+        "context_safety_score",
+        "dimensions",
+        "residual_risk",
+        "decision",
+        "hard_failures",
+        "required_controls",
+        "missing_controls",
+        "scoring_disclosure"
+      ],
+      "properties": {
+        "standard": { "type": "string" },
+        "model_version": { "const": "asl-safety-standard@0.2.0" },
+        "context_safety_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "dimensions": {
+          "type": "object",
+          "required": [
+            "exposure_risk",
+            "control_strength",
+            "supply_chain_trust",
+            "evidence_confidence",
+            "incident_risk"
+          ],
+          "additionalProperties": true
+        },
+        "residual_risk": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "decision": {
+          "type": "string",
+          "enum": ["allow", "allow_with_restrictions", "ask_user", "avoid"]
+        },
+        "hard_failures": { "type": "array", "items": { "type": "string" } },
+        "required_controls": { "type": "array", "items": { "type": "string" } },
+        "missing_controls": { "type": "array", "items": { "type": "string" } },
+        "scoring_disclosure": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "score_breakdown": {
+      "type": ["object", "null"],
+      "required": [
+        "model_version",
+        "mode",
+        "base_score",
+        "risk_penalty",
+        "trust_adjustment",
+        "source_reliability",
+        "applied_risk_weights",
+        "applied_trust_signals",
+        "sentiment",
+        "decision_thresholds"
+      ],
+      "properties": {
+        "model_version": { "type": "string" },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "strict_reviewed_intelligence_record",
+            "curated_baseline_record",
+            "monitored_catalog_record",
+            "candidate_catalog_record",
+            "inferred_from_submitted_metadata"
+          ]
+        },
+        "base_score": { "type": "integer" },
+        "risk_penalty": { "type": "integer" },
+        "trust_adjustment": { "type": "integer" },
+        "source_reliability": { "type": "number" },
+        "source_reliability_adjustment": { "type": "integer" },
+        "applied_risk_weights": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["signal", "weight"],
+            "properties": {
+              "signal": { "type": "string" },
+              "weight": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "applied_trust_signals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["signal", "weight"],
+            "properties": {
+              "signal": { "type": "string" },
+              "weight": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sentiment": {
+          "type": "object",
+          "required": ["auxiliary_only", "negative_count", "positive_count", "rule"],
+          "properties": {
+            "auxiliary_only": { "type": "boolean" },
+            "negative_count": { "type": "integer" },
+            "positive_count": { "type": "integer" },
+            "rule": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "dimensions": { "type": "object", "additionalProperties": true },
+        "residual_risk": { "type": "integer" },
+        "hard_failures": { "type": "array", "items": { "type": "string" } },
+        "required_controls": { "type": "array", "items": { "type": "string" } },
+        "missing_controls": { "type": "array", "items": { "type": "string" } },
+        "decision_thresholds": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "risk_signals": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_user_confirmation": { "type": "boolean" },
+    "safe_install_plan": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommended_alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "reason", "action"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "reason": { "type": "string" },
+          "action": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "alternative_coverage": {
+      "type": "object",
+      "required": ["status", "reviewed_alternative_count", "reason", "graph_version"],
+      "properties": {
+        "status": {
+          "enum": ["verified", "conditional", "gap", "not_applicable"]
+        },
+        "reviewed_alternative_count": { "type": "integer", "minimum": 0 },
+        "reason": { "type": ["string", "null"] },
+        "target_research_queries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "graph_version": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "next_action": {
+      "type": "string",
+      "enum": ["install", "apply_restrictions_then_install", "ask_user_before_install", "do_not_install"]
+    },
+    "one_step_action": {
+      "type": "object",
+      "required": ["action_type", "agent_instruction", "requires_user_confirmation", "blocks_install"],
+      "properties": {
+        "action_type": {
+          "type": "string",
+          "enum": ["install", "apply_restrictions_then_install", "ask_user_before_install", "do_not_install"]
+        },
+        "command": { "type": ["string", "null"] },
+        "agent_instruction": { "type": "string" },
+        "requires_user_confirmation": { "type": "boolean" },
+        "blocks_install": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "agent_decision_contract": {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "install_allowed",
+        "automatic_install_allowed",
+        "user_confirmation_required",
+        "restrictions_required",
+        "submit_unknown_required",
+        "research_status_required_before_retry",
+        "outcome_report_required",
+        "feedback_requested",
+        "blocks_install",
+        "blocking_reasons",
+        "required_tools",
+        "allowed_outcomes",
+        "retry_policy",
+        "component_fingerprint_fields"
+      ],
+      "properties": {
+        "contract_version": { "type": "string" },
+        "install_allowed": { "type": "boolean" },
+        "automatic_install_allowed": { "type": "boolean" },
+        "user_confirmation_required": { "type": "boolean" },
+        "restrictions_required": { "type": "boolean" },
+        "submit_unknown_required": { "type": "boolean" },
+        "research_status_required_before_retry": { "type": "boolean" },
+        "outcome_report_required": { "type": "boolean" },
+        "feedback_requested": { "type": "boolean" },
+        "blocks_install": { "type": "boolean" },
+        "blocking_reasons": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "required_tools": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allowed_outcomes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["installed", "blocked", "user_approved", "user_rejected", "restriction_applied", "failed", "skipped"]
+          }
+        },
+        "retry_policy": {
+          "type": "object",
+          "required": ["unknown_component", "decision_cache_ttl_hours"],
+          "properties": {
+            "unknown_component": { "type": "string" },
+            "decision_cache_ttl_hours": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+        "component_fingerprint_fields": {
+          "type": "object",
+          "required": ["component_name", "component_type", "source_url", "install_command"],
+          "properties": {
+            "component_name": { "type": ["string", "null"] },
+            "component_type": { "type": "string" },
+            "source_url": { "type": ["string", "null"] },
+            "install_command": { "type": ["string", "null"] }
+          },
+          "additionalProperties": true
+        },
+        "safe_install_plan_required": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "recommended_alternative_count": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "agent_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "stage", "action_type", "required", "status", "instruction"],
+        "properties": {
+          "id": { "type": "string" },
+          "stage": {
+            "type": "string",
+            "enum": ["before_install", "after_decision"]
+          },
+          "action_type": {
+            "type": "string",
+            "enum": [
+              "record",
+              "call_asl_tool",
+              "apply_restrictions",
+              "ask_user",
+              "recommend_alternative"
+            ]
+          },
+          "required": { "type": "boolean" },
+          "status": { "type": "string" },
+          "instruction": { "type": "string" },
+          "tool": { "type": ["string", "null"] },
+          "arguments": { "type": "object", "additionalProperties": true },
+          "arguments_template": { "type": "object", "additionalProperties": true },
+          "checklist": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "alternatives": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "agent_instruction": { "type": "string" },
+    "intelligence_coverage": {
+      "type": "object",
+      "required": ["state", "reviewed", "cataloged", "source", "confidence"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["strict_reviewed", "curated_baseline", "monitored", "candidate", "unknown"]
+        },
+        "reviewed": { "type": "boolean" },
+        "strict_reviewed": { "type": "boolean" },
+        "curated_baseline": { "type": "boolean" },
+        "cataloged": { "type": "boolean" },
+        "monitored": { "type": "boolean" },
+        "source": { "type": "string" },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium_high", "medium", "low"]
+        },
+        "disclosure": { "type": ["string", "null"] },
+        "catalog": {
+          "type": ["object", "null"],
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "unknown_component": {
+      "type": ["object", "null"],
+      "properties": {
+        "should_submit": { "type": "boolean" },
+        "submission_required": { "type": "boolean" },
+        "reason": { "type": "string" },
+        "submit_tool": { "type": "string" },
+        "research_status_tool": { "type": "string" },
+        "retry_policy": { "type": "string" },
+        "submission": {
+          "type": "object",
+          "properties": {
+            "queued": { "type": "boolean" },
+            "id": { "type": "string" },
+            "path": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "resolution": {
+      "type": "object",
+      "required": ["source", "checked_at", "local_fallback_used"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": ["asl_cloud", "local_fallback", "local_only"]
+        },
+        "api_url": { "type": "string" },
+        "checked_at": { "type": "string" },
+        "local_fallback_used": { "type": "boolean" },
+        "fallback_reason": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

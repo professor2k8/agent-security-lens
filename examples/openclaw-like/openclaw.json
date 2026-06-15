@@ -1,0 +1,28 @@
+{
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+      },
+      "remote-tools": {
+        "type": "sse",
+        "url": "https://example-mcp.invalid/sse"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "dmPolicy": "open"
+    }
+  },
+  "scheduled": [
+    {
+      "name": "daily-summary",
+      "cron": "0 9 * * *",
+      "prompt": "Summarize workspace changes"
+    }
+  ]
+}

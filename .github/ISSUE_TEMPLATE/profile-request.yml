@@ -1,0 +1,35 @@
+name: Ecosystem profile request
+description: Propose a popular Agent ecosystem for future profile coverage.
+title: "[Profile] "
+labels: ["ecosystem-profile"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Agent ecosystem
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Canonical public source
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: textarea
+    id: adoption
+    attributes:
+      label: Adoption evidence
+      description: Include public usage, download, community or ecosystem references.
+    validations:
+      required: true
+  - type: textarea
+    id: paths
+    attributes:
+      label: Known configuration and component paths
+      description: Public documentation only. Do not include private machine paths or secrets.
+  - type: textarea
+    id: security
+    attributes:
+      label: Security-relevant behavior
+      description: Shell, filesystem, browser, network, credential, persistence or delegation behavior.

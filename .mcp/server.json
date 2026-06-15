@@ -1,0 +1,42 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.professor2k8/agent-security-lens",
+  "title": "AgentSecurityLens",
+  "description": "Security intelligence MCP for agents to review MCPs, Skills and tools before installation.",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/professor2k8/agent-security-lens",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "agent-security-lens",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ASL_API_URL",
+          "description": "AgentSecurityLens Cloud Intelligence API URL.",
+          "isRequired": false,
+          "default": "https://api.agentsecuritylens.com"
+        },
+        {
+          "name": "ASL_API_KEY",
+          "description": "Optional API key for Team, Pro or Enterprise use.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "ASL_MODE",
+          "description": "Set to local for offline fallback mode.",
+          "isRequired": false,
+          "default": "online"
+        }
+      ]
+    }
+  ]
+}

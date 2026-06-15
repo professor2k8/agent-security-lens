@@ -1,0 +1,65 @@
+{
+  "id": "mcp",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "mcp-stdio-process-server",
+      "title": "MCP stdio process server detected",
+      "category": "execution-risk",
+      "severity": "high",
+      "confidence": 0.86,
+      "permissions": ["subprocess-spawn", "mcp-tool-access"],
+      "target_paths": ["**/mcp*.json", "**/*.toml", "**/*.yaml", "**/*.yml", "**/*.json"],
+      "patterns": ["\"command\"\\s*:", "\\b(npx|uvx|python|node|docker)\\b", "@modelcontextprotocol/server-"],
+      "why_it_matters": "A stdio MCP server starts a local process. The agent may delegate tool calls to that process.",
+      "recommended_actions": [
+        "Verify the MCP package source and command arguments.",
+        "Pin the MCP package version."
+      ],
+      "recommended_alternatives": [
+        "Use a local verified MCP server with a pinned version.",
+        "Disable this MCP server if it is not required."
+      ],
+      "migration_instruction": "Replace moving MCP commands such as npx latest with a pinned package version."
+    },
+    {
+      "id": "mcp-remote-endpoint",
+      "title": "Remote MCP endpoint detected",
+      "category": "remote-access-risk",
+      "severity": "medium",
+      "confidence": 0.8,
+      "permissions": ["network-access", "external-endpoint", "mcp-tool-access"],
+      "target_paths": ["**/mcp*.json", "**/*.toml", "**/*.yaml", "**/*.yml", "**/*.json"],
+      "patterns": ["\"type\"\\s*:\\s*\"(sse|http|streamable-http)\"", "https?://[^\\s\"']+"],
+      "why_it_matters": "Remote MCP endpoints can receive tool calls or provide tools from outside the local environment.",
+      "recommended_actions": [
+        "Verify the remote MCP owner and transport security.",
+        "Restrict exposed tools if the client supports filtering."
+      ],
+      "recommended_alternatives": [
+        "Prefer a local stdio MCP server from a verified source for sensitive tasks."
+      ],
+      "migration_instruction": "Disable remote MCP endpoints for sensitive workspaces or replace them with local pinned MCP servers."
+    },
+    {
+      "id": "mcp-filesystem-write",
+      "title": "Filesystem write MCP capability detected",
+      "category": "data-exposure-risk",
+      "severity": "high",
+      "confidence": 0.84,
+      "permissions": ["filesystem-write", "mcp-tool-access"],
+      "target_paths": ["**/*"],
+      "patterns": ["write_file|edit_file|move_file|create_directory|delete_file|filesystem"],
+      "match_scope": "file",
+      "why_it_matters": "Filesystem write tools can modify local files through agent tool calls.",
+      "recommended_actions": [
+        "Limit filesystem tools to a dedicated workspace.",
+        "Disable write-capable tools unless required."
+      ],
+      "recommended_alternatives": [
+        "Use read-only filesystem tooling for inspection tasks."
+      ],
+      "migration_instruction": "Replace write-capable filesystem tools with read-only tools when the task only needs inspection."
+    }
+  ]
+}

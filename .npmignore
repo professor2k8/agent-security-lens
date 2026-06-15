@@ -1,0 +1,9 @@
+.agentsecuritylens/
+.asl-data/
+.github/
+.npm-cache/
+assessment-runs/
+node_modules/
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+*.tgz

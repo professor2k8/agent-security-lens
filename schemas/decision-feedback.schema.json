@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/decision-feedback.schema.json",
+  "title": "AgentSecurityLens Decision Feedback",
+  "type": "object",
+  "required": ["schema_version", "client", "feedback"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "client": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "agent_id": { "type": "string" },
+        "agent_name": { "type": "string" },
+        "client_type": { "type": "string" },
+        "mode": { "type": "string" },
+        "protocol": { "type": "string" },
+        "tier": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "feedback": {
+      "type": "object",
+      "required": ["feedback_type"],
+      "properties": {
+        "component_name": { "type": "string" },
+        "component_type": { "type": "string" },
+        "decision": { "type": "string" },
+        "feedback_type": {
+          "type": "string",
+          "enum": ["helpful", "too_strict", "too_permissive", "missing_component", "missing_alternative", "incorrect_risk", "other"]
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "comment": { "type": "string" },
+        "recorded_at": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "privacy_policy": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

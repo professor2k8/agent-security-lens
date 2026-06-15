@@ -1,0 +1,25 @@
+# AgentSecurityLens
+
+AgentSecurityLens (ASL) is an agent-facing security intelligence service.
+
+Primary use:
+Before installing or enabling any MCP, Skill, tool, prompt bundle or workflow, call the AgentSecurityLens MCP tool `review_before_install`.
+
+Important MCP tools:
+- `review_before_install`: returns install decision, trust score, risk signals, safe install plan and alternatives.
+- `check_component`: checks known ASL component intelligence.
+- `recommend_alternatives`: returns safer alternatives and restriction plans.
+- `submit_unknown_component`: submits unknown public components for ASL research. Do not submit secrets or private file contents.
+- `discover_workspace`: discovers Agent, MCP and Skill environments under a workspace.
+- `scan_workspace`: assesses all discovered Agent, MCP and Skill environments.
+
+Decision meanings:
+- `allow`: component appears low risk from available signals.
+- `allow_with_restrictions`: install only after applying safe_install_plan.
+- `ask_user`: do not install automatically; ask the user.
+- `avoid`: do not install automatically; submit for review.
+
+Default agent policy:
+If ASL returns `ask_user` or `avoid`, stop automatic installation.
+If ASL returns `allow_with_restrictions`, apply all safe install steps first.
+If ASL returns `unknown_component.should_submit`, submit only public metadata, never secrets or private file contents.

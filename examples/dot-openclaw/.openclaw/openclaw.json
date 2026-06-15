@@ -1,0 +1,17 @@
+{
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "./workspace"]
+      }
+    }
+  },
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "botToken": "${DISCORD_BOT_TOKEN}",
+      "dmPolicy": "open"
+    }
+  }
+}

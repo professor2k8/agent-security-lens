@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/component-intelligence.schema.json",
+  "title": "AgentSecurityLens Component Intelligence Database",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "components"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "counts": {
+      "type": "object",
+      "required": ["total_records", "strict_reviewed", "curated_baseline"],
+      "properties": {
+        "total_records": { "type": "integer", "minimum": 0 },
+        "strict_reviewed": { "type": "integer", "minimum": 0 },
+        "curated_baseline": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "aliases",
+          "source_patterns",
+          "trust_score",
+          "risk_level",
+          "risk_signals",
+          "safe_install_plan",
+          "alternatives",
+          "decision"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["agent-framework", "mcp", "skill", "tool", "prompt", "workflow", "memory", "unknown"]
+          },
+          "aliases": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source_patterns": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "intelligence_state": {
+            "type": "string",
+            "enum": ["strict_reviewed", "curated_baseline"]
+          },
+          "review_state": {
+            "type": "string",
+            "enum": ["reviewed", "curated_baseline"]
+          },
+          "evidence_status": { "type": "string" },
+          "disclosure": { "type": "string" },
+          "trust_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "risk_signals": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "safe_install_plan": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "alternatives": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "decision": {
+            "type": "string",
+            "enum": ["allow", "allow_with_restrictions", "ask_user", "avoid"]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

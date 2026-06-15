@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/agent-usage-event.schema.json",
+  "title": "AgentSecurityLens Agent Usage Event",
+  "type": "object",
+  "required": ["schema_version", "client", "event"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "client": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "agent_id": { "type": "string" },
+        "agent_name": { "type": "string" },
+        "client_type": { "type": "string" },
+        "mode": { "type": "string" },
+        "protocol": { "type": "string" },
+        "tier": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "event": {
+      "type": "object",
+      "required": ["event_type"],
+      "properties": {
+        "event_type": { "type": "string" },
+        "component_name": { "type": "string" },
+        "component_type": { "type": "string" },
+        "source_url": { "type": "string" },
+        "decision": { "type": "string" },
+        "outcome": { "type": "string" },
+        "restriction_applied": { "type": "boolean" },
+        "alternative_used": { "type": "string" },
+        "error_summary": { "type": "string" },
+        "recorded_at": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "privacy_policy": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

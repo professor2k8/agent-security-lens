@@ -1,0 +1,221 @@
+{
+  "schema_version": "0.2.0",
+  "updated_at": "2026-06-15T00:00:00.000Z",
+  "standard_id": "asl-agent-component-safety-standard",
+  "model_version": "asl-safety-standard@0.2.0",
+  "principle": "ASL evaluates a component in a specific installation context. Capability exposure is not proof of malicious intent; decisions combine exposure, verified controls, supply-chain trust, evidence confidence and confirmed incidents.",
+  "exposure_contexts": {
+    "runtime_exposure": {
+      "weight": 1,
+      "meaning": "Executable source or runtime configuration on the default component path."
+    },
+    "install_exposure": {
+      "weight": 0.85,
+      "meaning": "Installation, setup, build or deployment behavior."
+    },
+    "documented_optional_capability": {
+      "weight": 0.45,
+      "meaning": "Capability documented in examples, tests or optional bundled instructions."
+    },
+    "supply_chain_exposure": {
+      "weight": 0.35,
+      "meaning": "Dependency, manifest or publication metadata exposure."
+    },
+    "repository_maintenance_activity": {
+      "weight": 0,
+      "meaning": "Repository CI or release activity retained as evidence but excluded from installed-component runtime risk."
+    }
+  },
+  "score_dimensions": {
+    "exposure_risk": {
+      "direction": "higher_is_more_exposed",
+      "range": [0, 100],
+      "meaning": "Potential impact of the capabilities the component can exercise."
+    },
+    "control_strength": {
+      "direction": "higher_is_better",
+      "range": [0, 100],
+      "meaning": "Controls already verified for the proposed installation. Recommended controls do not count until applied."
+    },
+    "supply_chain_trust": {
+      "direction": "higher_is_better",
+      "range": [0, 100],
+      "meaning": "Source identity, version pinning, release provenance, maintenance and dependency transparency."
+    },
+    "evidence_confidence": {
+      "direction": "higher_is_better",
+      "range": [0, 100],
+      "meaning": "Completeness, reliability, reproducibility and independent review of ASL evidence."
+    },
+    "incident_risk": {
+      "direction": "higher_is_more_severe",
+      "range": [0, 100],
+      "meaning": "Version-scoped, deduplicated and corroborated security incidents. General sentiment is auxiliary only."
+    }
+  },
+  "review_levels": {
+    "L0_discovered": "Source discovered; no security decision.",
+    "L1_auto_assessed": "Automated metadata or static assessment; cannot authorize automatic installation.",
+    "L2_evidence_reviewed": "Versioned evidence, technical scan, community-source check and independent recalculation completed.",
+    "L3_runtime_validated": "L2 plus controlled runtime or sandbox validation.",
+    "L4_continuously_monitored": "L3 plus active version, incident and source-change monitoring."
+  },
+  "component_states": {
+    "cataloged": "Discovered from a source. Not reviewed.",
+    "triaged": "Basic metadata and source have been checked.",
+    "scanned": "Static risk signals have been extracted.",
+    "review_pending": "Waiting for ASL team review.",
+    "reviewed": "Reviewed with evidence and a machine-readable decision.",
+    "published": "Served to agents through ASL intelligence API.",
+    "deprecated": "Outdated or superseded.",
+    "archived": "No longer active or duplicate."
+  },
+  "permission_model": [
+    "shell-execution",
+    "subprocess-spawn",
+    "remote-code-install",
+    "filesystem-read",
+    "filesystem-write",
+    "credential-access",
+    "browser-access",
+    "network-access",
+    "database-access",
+    "repository-write",
+    "message-write",
+    "workflow-automation",
+    "background-execution",
+    "data-retention",
+    "multi-agent-delegation",
+    "third-party-integration"
+  ],
+  "risk_domains": [
+    {
+      "id": "execution-risk",
+      "weight": -25,
+      "signals": ["shell-execution", "subprocess-spawn", "remote-code-install", "docker-runtime"]
+    },
+    {
+      "id": "data-exposure-risk",
+      "weight": -22,
+      "signals": ["credential-access", "filesystem-read", "browser-access", "database-access", "data-retention"]
+    },
+    {
+      "id": "remote-access-risk",
+      "weight": -16,
+      "signals": ["network-access", "external-api", "webhook", "remote-mcp-endpoint"]
+    },
+    {
+      "id": "delegation-risk",
+      "weight": -14,
+      "signals": ["multi-agent-delegation", "tool-chaining", "third-party-integration"]
+    },
+    {
+      "id": "persistence-automation-risk",
+      "weight": -18,
+      "signals": ["workflow-automation", "background-execution", "scheduled-trigger"]
+    },
+    {
+      "id": "instruction-injection-risk",
+      "weight": -20,
+      "signals": ["hidden-instruction", "override-rules", "ignore-safety", "prompt-injection-pattern"]
+    }
+  ],
+  "trust_signals": [
+    {
+      "id": "source-official-or-known-org",
+      "weight": 12,
+      "source": "github_metadata"
+    },
+    {
+      "id": "active-maintenance",
+      "weight": 8,
+      "source": "commit_history"
+    },
+    {
+      "id": "transparent-permissions",
+      "weight": 10,
+      "source": "documentation_review"
+    },
+    {
+      "id": "signed-release-or-pinned-version",
+      "weight": 8,
+      "source": "release_metadata"
+    },
+    {
+      "id": "high-community-adoption",
+      "weight": 6,
+      "source": "popularity_signal"
+    },
+    {
+      "id": "negative-community-reports",
+      "weight": -18,
+      "source": "sentiment_monitoring"
+    },
+    {
+      "id": "unresolved-security-issues",
+      "weight": -16,
+      "source": "issue_monitoring"
+    },
+    {
+      "id": "unknown-maintainer",
+      "weight": -10,
+      "source": "metadata_gap"
+    }
+  ],
+  "source_reliability": {
+    "official_registry": 0.95,
+    "official_github_org": 0.9,
+    "github_metadata": 0.75,
+    "package_registry": 0.75,
+    "directory_listing": 0.65,
+    "community_report": 0.55,
+    "social_media": 0.45,
+    "unverified_blog": 0.35
+  },
+  "sentiment_monitoring": {
+    "sources": ["GitHub issues", "GitHub discussions", "Reddit", "Hacker News", "V2EX", "X/Twitter", "YouTube/Bilibili comments", "WeChat public articles"],
+    "negative_terms": [
+      "stole token",
+      "leaked key",
+      "unexpected shell",
+      "hidden download",
+      "malicious",
+      "unsafe",
+      "suspicious",
+      "prompt injection",
+      "credential leak",
+      "cookie",
+      "backdoor"
+    ],
+    "positive_terms": ["read-only", "scoped token", "sandbox", "signed release", "permission documented"],
+    "fields": ["mention_count", "negative_count", "positive_count", "source_reliability", "sample_urls", "last_seen_at"],
+    "rule": "Sentiment is an auxiliary risk signal. It never alone proves a component is malicious."
+  },
+  "decision_thresholds": {
+    "allow": "Only when evidence is reviewed, residual risk is low, supply-chain trust is sufficient and required controls are verified.",
+    "allow_with_restrictions": "Evidence is reviewed and the installation is acceptable only after listed controls are applied.",
+    "ask_user": "Evidence is incomplete, required controls are missing or the proposed context remains highly exposed.",
+    "avoid": "A hard failure or confirmed unresolved critical incident blocks installation."
+  },
+  "hard_failures": [
+    "credential-theft-confirmed",
+    "hidden-data-exfiltration",
+    "malicious-code-confirmed",
+    "token-passthrough",
+    "known-critical-vulnerability-unmitigated",
+    "version-mismatch",
+    "destructive-action-without-confirmation",
+    "confirmed-critical-security-incident"
+  ],
+  "community_intelligence_policy": {
+    "confidence_rule": "Evidence confidence measures whether relevant sources were systematically checked and records are reproducible. Positive sentiment never proves safety.",
+    "incident_rule": "Negative claims affect incident risk only after component identity, affected version, source independence and technical support are evaluated.",
+    "deduplication_keys": ["canonical_url", "content_hash", "claim_type", "affected_version", "technical_artifact_hash"],
+    "incident_states": ["unverified", "credible", "corroborated", "confirmed", "fixed", "rejected"]
+  },
+  "evidence_requirements": {
+    "cataloged": ["source_url", "collected_at", "source_type"],
+    "reviewed": ["source_url", "install_or_usage_docs", "permission_or_capability_evidence", "risk_signals", "safe_install_plan"],
+    "published": ["reviewed_record", "decision", "trust_score", "version_or_time_window", "reviewer_or_team"]
+  }
+}

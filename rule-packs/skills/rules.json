@@ -1,0 +1,45 @@
+{
+  "id": "skills",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "skill-env-requirement",
+      "title": "Skill references environment credentials",
+      "category": "data-exposure-risk",
+      "severity": "medium",
+      "confidence": 0.78,
+      "permissions": ["credential-access", "env-read"],
+      "target_paths": ["**/SKILL.md", "**/skills.config.json", "**/SKILLs/**"],
+      "patterns": ["API_KEY|TOKEN|SECRET|\\.env"],
+      "supersedes": ["core-env-reference"],
+      "why_it_matters": "Skills that require credentials can inherit sensitive access from the local environment.",
+      "recommended_actions": [
+        "Review required credentials before enabling the skill.",
+        "Use scoped credentials with minimum permissions."
+      ],
+      "recommended_alternatives": [
+        "Use a read-only or unauthenticated skill variant if available."
+      ],
+      "migration_instruction": "Create a dedicated low-privilege token for this skill instead of reusing personal credentials."
+    },
+    {
+      "id": "skill-remote-install-source",
+      "title": "Skill remote install source detected",
+      "category": "supply-chain-risk",
+      "severity": "medium",
+      "confidence": 0.75,
+      "permissions": ["skill-installation", "external-download"],
+      "target_paths": ["**/SKILL.md", "**/skills.config.json", "**/*.json"],
+      "patterns": ["github\\.com|https?://|git clone|zip"],
+      "why_it_matters": "Remote skill sources can add new instructions, dependencies or scripts to the agent environment.",
+      "recommended_actions": [
+        "Verify the skill source.",
+        "Pin the source to a commit or release."
+      ],
+      "recommended_alternatives": [
+        "Use bundled or community-vetted skills where available."
+      ],
+      "migration_instruction": "Pin the skill source to a commit SHA and review SKILL.md before enabling it."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/ecosystem-candidate-registry.schema.json",
+  "title": "AgentSecurityLens Ecosystem Candidate Registry",
+  "type": "object",
+  "required": ["id", "version", "status", "candidates"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "experimental", "active", "deprecated", "archived"]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "entity_type",
+          "lifecycle_status",
+          "claim_status",
+          "priority",
+          "regions",
+          "why_candidate",
+          "known_or_expected_artifacts",
+          "data_needs",
+          "profile_impacts"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "name": { "type": "string" },
+          "entity_type": {
+            "type": "string",
+            "enum": ["agent-ecosystem", "mcp-ecosystem", "skill-ecosystem", "agent-bundle"]
+          },
+          "lifecycle_status": {
+            "type": "string",
+            "enum": ["discovered", "candidate", "draft-profile", "experimental-profile", "active-profile", "deprecated", "archived"]
+          },
+          "claim_status": {
+            "type": "string",
+            "enum": ["unverified-user-supplied", "research-needed", "partially-verified", "verified"]
+          },
+          "priority": { "type": "integer" },
+          "regions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "why_candidate": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "known_or_expected_artifacts": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "data_needs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "description", "status"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]*$"
+                },
+                "description": { "type": "string" },
+                "status": {
+                  "type": "string",
+                  "enum": ["needed", "in-progress", "collected", "blocked"]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "profile_impacts": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "notes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

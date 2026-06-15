@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/trust-signal-taxonomy.schema.json",
+  "title": "AgentSecurityLens Trust Signal Taxonomy",
+  "type": "object",
+  "required": ["id", "version", "status", "signals"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "experimental", "active", "deprecated", "archived"]
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "direction",
+          "weight",
+          "source_type",
+          "applies_to",
+          "evidence_required",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "title": { "type": "string" },
+          "direction": {
+            "type": "string",
+            "enum": ["positive", "negative", "neutral"]
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": -100,
+            "maximum": 100
+          },
+          "source_type": {
+            "type": "string",
+            "enum": ["static-analysis", "github", "community", "transparency", "manual-review"]
+          },
+          "applies_to": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["agent", "mcp", "skill", "maintainer", "version", "recommendation"]
+            }
+          },
+          "evidence_required": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

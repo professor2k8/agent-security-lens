@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentsecuritylens.dev/schemas/comparison-result.schema.json",
+  "title": "AgentSecurityLens Comparison Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "comparison",
+    "score",
+    "finding_counts",
+    "profiles",
+    "rule_packs",
+    "recommendation_packs",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "comparison": {
+      "type": "object",
+      "required": [
+        "previous_assessment_id",
+        "current_assessment_id",
+        "previous_completed_at",
+        "current_completed_at",
+        "compared_at"
+      ],
+      "properties": {
+        "previous_assessment_id": { "type": "string" },
+        "current_assessment_id": { "type": "string" },
+        "previous_completed_at": { "type": "string" },
+        "current_completed_at": { "type": "string" },
+        "compared_at": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "score": {
+      "type": "object",
+      "required": ["previous", "current", "delta"],
+      "properties": {
+        "previous": { "type": "integer" },
+        "current": { "type": "integer" },
+        "delta": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "finding_counts": {
+      "type": "object",
+      "required": ["previous", "current", "added", "resolved", "persistent"],
+      "properties": {
+        "previous": { "type": "integer" },
+        "current": { "type": "integer" },
+        "added": { "type": "integer" },
+        "resolved": { "type": "integer" },
+        "persistent": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "profiles": { "$ref": "#/$defs/versioned_diff" },
+    "rule_packs": { "$ref": "#/$defs/versioned_diff" },
+    "recommendation_packs": { "$ref": "#/$defs/versioned_diff" },
+    "findings": {
+      "type": "object",
+      "required": ["added", "resolved", "persistent"],
+      "properties": {
+        "added": { "$ref": "#/$defs/finding_list" },
+        "resolved": { "$ref": "#/$defs/finding_list" },
+        "persistent": { "$ref": "#/$defs/finding_list" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "versioned_diff": {
+      "type": "object",
+      "required": ["added", "removed", "changed"],
+      "properties": {
+        "added": { "type": "array", "items": { "type": "object" } },
+        "removed": { "type": "array", "items": { "type": "object" } },
+        "changed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "previous_version", "current_version"],
+            "properties": {
+              "id": { "type": "string" },
+              "previous_version": { "type": "string" },
+              "current_version": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "finding_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "rule_id", "title", "severity", "category", "evidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "rule_id": { "type": "string" },
+          "title": { "type": "string" },
+          "severity": { "type": "string" },
+          "category": { "type": "string" },
+          "evidence": { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

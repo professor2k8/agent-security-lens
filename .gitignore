@@ -1,0 +1,6 @@
+.agentsecuritylens/
+.asl-data/
+.npm-cache/
+assessment-runs/
+node_modules/
+*.tgz

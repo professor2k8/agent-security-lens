@@ -1,0 +1,23 @@
+{
+  "id": "hermes-like",
+  "version": "0.1.0",
+  "status": "draft",
+  "confidence": 0.5,
+  "coverage": 0.35,
+  "extends": ["generic-agent", "mcp-server", "skill-runtime"],
+  "rule_packs": ["core", "hermes"],
+  "path_hints": [
+    "config.yaml",
+    ".hermes/config.yaml",
+    "optional-mcps/",
+    "optional-skills/",
+    "skills/openclaw-imports/",
+    "cron/",
+    "gateway/",
+    "memory/"
+  ],
+  "known_limitations": [
+    "Hermes-like profile is a draft profile and should not be treated as full coverage.",
+    "Migration and gateway behavior require further source-level validation."
+  ]
+}

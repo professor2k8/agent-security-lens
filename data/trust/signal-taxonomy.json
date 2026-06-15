@@ -1,0 +1,107 @@
+{
+  "id": "trust-signal-taxonomy",
+  "version": "0.1.0",
+  "status": "draft",
+  "signals": [
+    {
+      "id": "static-shell-execution",
+      "title": "Shell execution capability detected",
+      "direction": "negative",
+      "weight": -25,
+      "source_type": "static-analysis",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["finding_id", "file_path", "line_number", "permission:shell-execution", "permission:subprocess-spawn"],
+      "description": "The entity can execute local commands or delegates to a local process."
+    },
+    {
+      "id": "static-remote-endpoint",
+      "title": "Remote endpoint capability detected",
+      "direction": "negative",
+      "weight": -18,
+      "source_type": "static-analysis",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["finding_id", "file_path", "line_number", "permission:network-access"],
+      "description": "The entity uses a remote endpoint that can receive data, provide tools or influence agent behavior."
+    },
+    {
+      "id": "static-credential-reference",
+      "title": "Credential reference detected",
+      "direction": "negative",
+      "weight": -18,
+      "source_type": "static-analysis",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["finding_id", "file_path", "line_number", "permission:credential-access"],
+      "description": "The entity references credentials, tokens or environment variables."
+    },
+    {
+      "id": "static-filesystem-write",
+      "title": "Filesystem write capability detected",
+      "direction": "negative",
+      "weight": -22,
+      "source_type": "static-analysis",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["finding_id", "file_path", "line_number", "permission:filesystem-write"],
+      "description": "The entity can write to local files or delegates to a tool that can write to local files."
+    },
+    {
+      "id": "github-active-maintenance",
+      "title": "Active maintenance",
+      "direction": "positive",
+      "weight": 10,
+      "source_type": "github",
+      "applies_to": ["agent", "mcp", "skill", "maintainer"],
+      "evidence_required": ["repository_url", "recent_commit_date", "release_or_tag_history"],
+      "description": "The repository appears actively maintained based on recent commits, releases or issue activity."
+    },
+    {
+      "id": "github-verified-organization",
+      "title": "Verified or recognizable organization",
+      "direction": "positive",
+      "weight": 12,
+      "source_type": "github",
+      "applies_to": ["agent", "mcp", "skill", "maintainer"],
+      "evidence_required": ["organization_url", "verification_or_reputation_evidence"],
+      "description": "The maintainer is a verified or recognizable organization with public history."
+    },
+    {
+      "id": "transparency-permission-docs",
+      "title": "Transparent permission documentation",
+      "direction": "positive",
+      "weight": 12,
+      "source_type": "transparency",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["readme_url_or_path", "permission_section"],
+      "description": "The project explains what permissions, tools, credentials or network endpoints it uses."
+    },
+    {
+      "id": "transparency-pinned-release",
+      "title": "Pinned or signed release available",
+      "direction": "positive",
+      "weight": 10,
+      "source_type": "transparency",
+      "applies_to": ["agent", "mcp", "skill", "version"],
+      "evidence_required": ["release_url", "tag_or_signature_evidence"],
+      "description": "The entity can be installed from a pinned version, release artifact or signed package."
+    },
+    {
+      "id": "community-negative-report",
+      "title": "Negative community report",
+      "direction": "negative",
+      "weight": -25,
+      "source_type": "community",
+      "applies_to": ["agent", "mcp", "skill", "maintainer", "version"],
+      "evidence_required": ["source_url", "report_summary", "accessed_at"],
+      "description": "Community discussion reports suspicious behavior, hidden downloads, unexpected shell usage or credential exposure."
+    },
+    {
+      "id": "manual-reviewed-alternative",
+      "title": "Manually reviewed alternative",
+      "direction": "positive",
+      "weight": 15,
+      "source_type": "manual-review",
+      "applies_to": ["recommendation", "mcp", "skill"],
+      "evidence_required": ["reviewer", "review_date", "review_notes"],
+      "description": "A recommendation or alternative has been manually reviewed against the current taxonomy."
+    }
+  ]
+}

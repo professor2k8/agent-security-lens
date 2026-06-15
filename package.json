@@ -1,0 +1,50 @@
+{
+  "name": "agent-security-lens",
+  "version": "0.1.0",
+  "private": false,
+  "mcpName": "io.github.professor2k8/agent-security-lens",
+  "description": "Agent-facing security MCP that queries ASL intelligence before autonomous agents install tools.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/professor2k8/agent-security-lens.git"
+  },
+  "homepage": "https://github.com/professor2k8/agent-security-lens#readme",
+  "bugs": {
+    "url": "https://github.com/professor2k8/agent-security-lens/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "agent-security",
+    "security",
+    "trust-score",
+    "agent-tools"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "agent-security-lens": "./apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl": "./apps/mcp-server/agent-security-lens-mcp.mjs",
+    "agent-security-lens-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl-scan": "./bin/agent-security-lens.mjs",
+    "agent-security-lens-scan": "./bin/agent-security-lens.mjs"
+  },
+  "scripts": {
+    "assess:example": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like",
+    "assess:json": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like --format json",
+    "assess:markdown": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like --format markdown",
+    "mcp:start": "node ./apps/mcp-server/agent-security-lens-mcp.mjs",
+    "mcp:smoke": "node ./scripts/verify-mcp-server.mjs",
+    "verify:registry": "node ./scripts/verify-registry.mjs",
+    "verify:examples": "node ./scripts/verify-examples.mjs",
+    "verify:public": "npm run verify:registry && npm run verify:examples && npm run mcp:smoke"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

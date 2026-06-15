@@ -1,0 +1,230 @@
+{
+  "id": "agent-ecosystem-candidates",
+  "version": "0.1.0",
+  "status": "draft",
+  "candidates": [
+    {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "entity_type": "agent-ecosystem",
+      "lifecycle_status": "draft-profile",
+      "claim_status": "unverified-user-supplied",
+      "priority": 100,
+      "regions": ["CN", "global"],
+      "why_candidate": [
+        "User identified OpenClaw as one of the most visible agent ecosystems in China.",
+        "Phase 1 already includes an OpenClaw-like profile and fixtures."
+      ],
+      "known_or_expected_artifacts": [
+        ".openclaw/openclaw.json",
+        "openclaw.json",
+        "SOUL.md",
+        "TOOLS.md",
+        "workspace/skills",
+        "MCP server configuration",
+        "remote channel configuration"
+      ],
+      "data_needs": [
+        {
+          "id": "cn-search-volume",
+          "description": "Collect Baidu result counts and Chinese community mentions for OpenClaw-related terms.",
+          "status": "needed"
+        },
+        {
+          "id": "github-signals",
+          "description": "Collect repository URL, stars, forks, release history, issue activity and maintainer signals.",
+          "status": "needed"
+        },
+        {
+          "id": "skills-mcp-inventory",
+          "description": "Inventory common OpenClaw skills, MCP integrations and install paths.",
+          "status": "needed"
+        }
+      ],
+      "profile_impacts": [
+        "Refine OpenClaw path hints.",
+        "Add product-specific remote trigger rules.",
+        "Add common OpenClaw skill and MCP replacement recommendations."
+      ],
+      "notes": [
+        "Do not treat user-supplied popularity claims as verified ranking data until research reports are attached."
+      ]
+    },
+    {
+      "id": "hermes-agent",
+      "name": "Hermes Agent",
+      "entity_type": "agent-ecosystem",
+      "lifecycle_status": "draft-profile",
+      "claim_status": "unverified-user-supplied",
+      "priority": 95,
+      "regions": ["CN", "global"],
+      "why_candidate": [
+        "User identified Hermes Agent as a priority ecosystem.",
+        "Phase 1 already includes a Hermes-like profile and fixtures."
+      ],
+      "known_or_expected_artifacts": [
+        ".hermes/config.json",
+        ".hermes/config.yaml",
+        "optional-mcps",
+        "optional-skills",
+        "gateway",
+        "cron",
+        "memory",
+        "skills/openclaw-imports"
+      ],
+      "data_needs": [
+        {
+          "id": "cn-search-volume",
+          "description": "Collect Baidu result counts and Chinese community mentions for Hermes Agent-related terms.",
+          "status": "needed"
+        },
+        {
+          "id": "github-signals",
+          "description": "Collect repository URL, stars, forks, release history, issue activity and maintainer signals.",
+          "status": "needed"
+        },
+        {
+          "id": "architecture-review",
+          "description": "Read public Hermes Agent architecture and identify product-specific config paths and risky behaviors.",
+          "status": "needed"
+        }
+      ],
+      "profile_impacts": [
+        "Refine Hermes path hints.",
+        "Add migration-specific rules for imported skills and memories.",
+        "Add gateway and scheduled task recommendations."
+      ],
+      "notes": [
+        "The current Hermes-like profile is intentionally conservative and marked draft."
+      ]
+    },
+    {
+      "id": "openmanus",
+      "name": "OpenManus",
+      "entity_type": "agent-ecosystem",
+      "lifecycle_status": "candidate",
+      "claim_status": "research-needed",
+      "priority": 80,
+      "regions": ["global", "CN"],
+      "why_candidate": [
+        "Previously discussed as part of the broader open agent landscape.",
+        "May represent a different architecture from OpenClaw-like and Hermes-like environments."
+      ],
+      "known_or_expected_artifacts": [
+        "agent configuration",
+        "tool configuration",
+        "MCP or plugin integration",
+        "prompt and memory files"
+      ],
+      "data_needs": [
+        {
+          "id": "source-identification",
+          "description": "Identify canonical repository, docs and install methods.",
+          "status": "needed"
+        },
+        {
+          "id": "usage-signals",
+          "description": "Collect GitHub, search and community activity signals.",
+          "status": "needed"
+        },
+        {
+          "id": "artifact-map",
+          "description": "Map config paths, skill paths, tool registry paths and execution behavior.",
+          "status": "needed"
+        }
+      ],
+      "profile_impacts": [
+        "Decide whether OpenManus needs a dedicated profile or can use generic-agent plus MCP and skill profiles."
+      ],
+      "notes": [
+        "No popularity or safety conclusion has been recorded yet."
+      ]
+    },
+    {
+      "id": "lobster-like",
+      "name": "Lobster-like Agent Ecosystem",
+      "entity_type": "agent-ecosystem",
+      "lifecycle_status": "candidate",
+      "claim_status": "research-needed",
+      "priority": 70,
+      "regions": ["global"],
+      "why_candidate": [
+        "Discussed as a possible autonomous-agent ecosystem with skills and MCP-style integrations.",
+        "Useful for checking whether the architecture generalizes beyond OpenClaw and Hermes."
+      ],
+      "known_or_expected_artifacts": [
+        "skills",
+        "browser tool configuration",
+        "MCP configuration",
+        "automation or background run configuration"
+      ],
+      "data_needs": [
+        {
+          "id": "source-identification",
+          "description": "Identify canonical repositories, docs and common install paths.",
+          "status": "needed"
+        },
+        {
+          "id": "skills-inventory",
+          "description": "Inventory common skills, browser tools and MCP resources.",
+          "status": "needed"
+        },
+        {
+          "id": "competitor-overlap",
+          "description": "Check whether existing security or guard tools already target this ecosystem.",
+          "status": "needed"
+        }
+      ],
+      "profile_impacts": [
+        "Use research findings to decide whether a lobster-like profile is warranted for Phase 1."
+      ],
+      "notes": [
+        "This candidate should not be prioritized only because it is structurally convenient."
+      ]
+    },
+    {
+      "id": "mcp-registry-ecosystem",
+      "name": "MCP Registry Ecosystem",
+      "entity_type": "mcp-ecosystem",
+      "lifecycle_status": "candidate",
+      "claim_status": "research-needed",
+      "priority": 90,
+      "regions": ["global"],
+      "why_candidate": [
+        "MCP integrations are a cross-agent risk and recommendation surface.",
+        "A reusable MCP reputation layer can benefit multiple agent profiles."
+      ],
+      "known_or_expected_artifacts": [
+        "MCP server manifests",
+        "tool schemas",
+        "transport configuration",
+        "stdio command configuration",
+        "remote endpoint configuration"
+      ],
+      "data_needs": [
+        {
+          "id": "mcp-source-list",
+          "description": "Identify public MCP registries, common MCP server lists and high-usage MCP repositories.",
+          "status": "needed"
+        },
+        {
+          "id": "permission-taxonomy",
+          "description": "Classify MCP tools into filesystem, shell, browser, network, credential and database access.",
+          "status": "needed"
+        },
+        {
+          "id": "replacement-map",
+          "description": "Map risky MCP patterns to safer local, pinned or read-only alternatives.",
+          "status": "needed"
+        }
+      ],
+      "profile_impacts": [
+        "Feed all agent profiles with shared MCP rules and recommendations.",
+        "Create MCP-specific reputation and replacement data."
+      ],
+      "notes": [
+        "This is likely a shared layer rather than a single-agent profile."
+      ]
+    }
+  ]
+}

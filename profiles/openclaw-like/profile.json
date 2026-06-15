@@ -1,0 +1,22 @@
+{
+  "id": "openclaw-like",
+  "version": "0.1.0",
+  "status": "experimental",
+  "confidence": 0.72,
+  "coverage": 0.55,
+  "extends": ["generic-agent", "mcp-server", "skill-runtime"],
+  "rule_packs": ["core", "openclaw"],
+  "path_hints": [
+    "openclaw.json",
+    ".openclaw/openclaw.json",
+    "AGENTS.md",
+    "SOUL.md",
+    "TOOLS.md",
+    "skills/",
+    "workspace/skills/"
+  ],
+  "known_limitations": [
+    "OpenClaw-like profile is based on public docs and observed ecosystem patterns.",
+    "Runtime enforcement and live tool-call inspection are out of scope for Phase 1."
+  ]
+}

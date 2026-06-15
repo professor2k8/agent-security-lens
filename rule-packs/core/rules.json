@@ -1,0 +1,82 @@
+{
+  "id": "core",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "core-shell-execution",
+      "title": "Shell execution pattern detected",
+      "category": "execution-risk",
+      "severity": "high",
+      "confidence": 0.82,
+      "permissions": ["shell-execution"],
+      "target_paths": ["**/*"],
+      "patterns": ["\\b(exec|spawn|subprocess|child_process|powershell|bash|cmd\\.exe)\\b"],
+      "why_it_matters": "This environment contains patterns that can execute local commands. That increases the trust required before running the agent.",
+      "recommended_actions": [
+        "Review the command source and arguments before running.",
+        "Disable command execution tools if they are not required."
+      ],
+      "recommended_alternatives": [
+        "Use a read-only tool or sandboxed command runner where possible."
+      ],
+      "migration_instruction": "Disable shell execution for this agent unless the task explicitly requires it."
+    },
+    {
+      "id": "core-remote-download",
+      "title": "Remote download pattern detected",
+      "category": "supply-chain-risk",
+      "severity": "medium",
+      "confidence": 0.78,
+      "permissions": ["external-download", "network-access"],
+      "target_paths": ["**/*"],
+      "patterns": ["\\b(curl|wget|Invoke-WebRequest|iwr)\\b", "https?://[^\\s]+\\.(sh|ps1|zip|tar|gz)"],
+      "why_it_matters": "Remote downloads can introduce new code, tools, skills or configuration into the agent environment.",
+      "recommended_actions": [
+        "Verify the source owner.",
+        "Pin versions or commit hashes instead of using moving branches."
+      ],
+      "recommended_alternatives": [
+        "Use a bundled or verified package source when available."
+      ],
+      "migration_instruction": "Replace unpinned remote downloads with pinned release assets or commit hashes."
+    },
+    {
+      "id": "core-env-reference",
+      "title": "Credential or environment variable reference detected",
+      "category": "data-exposure-risk",
+      "severity": "medium",
+      "confidence": 0.72,
+      "permissions": ["credential-access", "env-read"],
+      "target_paths": ["**/*"],
+      "patterns": ["(API_KEY|TOKEN|SECRET|PRIVATE_KEY|BOT_TOKEN|WEBHOOK_SECRET)", "\\.env"],
+      "why_it_matters": "Agent tools, skills or MCP servers may inherit credentials from environment variables or local files.",
+      "recommended_actions": [
+        "Use scoped credentials for agent environments.",
+        "Remove unused secrets before running the agent."
+      ],
+      "recommended_alternatives": [
+        "Use a dedicated low-privilege token for this agent."
+      ],
+      "migration_instruction": "Move high-privilege secrets out of the scanned agent environment and use scoped replacement tokens."
+    },
+    {
+      "id": "core-instruction-override",
+      "title": "Instruction override pattern detected",
+      "category": "data-exposure-risk",
+      "severity": "medium",
+      "confidence": 0.64,
+      "permissions": ["instruction-control"],
+      "target_paths": ["**/*.md", "AGENTS.md", "SOUL.md", "TOOLS.md"],
+      "patterns": ["ignore (previous|all) instructions", "override (safety|system|developer)"],
+      "why_it_matters": "Instruction override patterns can change how an agent follows rules and handles sensitive context.",
+      "recommended_actions": [
+        "Review the surrounding prompt text.",
+        "Remove hidden or unnecessary override instructions."
+      ],
+      "recommended_alternatives": [
+        "Use explicit, narrow tool permissions instead of broad instruction overrides."
+      ],
+      "migration_instruction": "Replace broad override instructions with specific, reviewable tool policies."
+    }
+  ]
+}

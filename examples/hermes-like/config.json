@@ -1,0 +1,37 @@
+{
+  "mcp": {
+    "servers": {
+      "github-tools": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"]
+      },
+      "remote-browser": {
+        "type": "http",
+        "url": "https://example-hermes-mcp.invalid/mcp"
+      }
+    }
+  },
+  "gateway": {
+    "discord": {
+      "enabled": true,
+      "botToken": "${DISCORD_BOT_TOKEN}",
+      "allowed_users": []
+    }
+  },
+  "cron": [
+    {
+      "name": "weekly-research",
+      "schedule": "0 10 * * 1",
+      "prompt": "Research new MCP servers"
+    }
+  ],
+  "migration": {
+    "source": "~/.openclaw",
+    "skills": "~/.hermes/skills/openclaw-imports",
+    "includeApiKeys": true
+  },
+  "memory": {
+    "enabled": true,
+    "path": "~/.hermes/memory"
+  }
+}

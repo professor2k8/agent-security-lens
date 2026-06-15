@@ -1,0 +1,17 @@
+{
+  "mcp": {
+    "servers": {
+      "remote-tools": {
+        "type": "http",
+        "url": "https://example-hermes.invalid/mcp"
+      }
+    }
+  },
+  "gateway": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "allowed_users": []
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "generic-agent",
+  "version": "0.1.0",
+  "status": "active",
+  "confidence": 0.6,
+  "coverage": 0.45,
+  "extends": [],
+  "rule_packs": ["core"],
+  "path_hints": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".cursor/rules",
+    ".env",
+    "mcp.json"
+  ],
+  "known_limitations": [
+    "Generic profile only detects common patterns and does not understand product-specific runtime behavior."
+  ]
+}

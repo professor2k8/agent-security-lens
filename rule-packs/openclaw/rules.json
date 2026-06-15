@@ -1,0 +1,46 @@
+{
+  "id": "openclaw",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "openclaw-remote-channel-policy",
+      "title": "OpenClaw remote channel policy detected",
+      "category": "remote-access-risk",
+      "severity": "medium",
+      "confidence": 0.76,
+      "permissions": ["remote-trigger", "credential-access"],
+      "target_paths": ["**/openclaw.json", "**/*.yaml", "**/*.yml", "**/*.json"],
+      "patterns": ["dmPolicy|allowFrom|groupPolicy|webhook|telegram|discord|slack|feishu|wechat|qq"],
+      "match_scope": "file",
+      "why_it_matters": "Remote channels can trigger agent sessions. Channel policies and allowlists determine who can reach the agent.",
+      "recommended_actions": [
+        "Restrict allowed users or groups.",
+        "Rotate bot tokens if they were exposed in local files."
+      ],
+      "recommended_alternatives": [
+        "Use local-only mode for sensitive workspaces."
+      ],
+      "migration_instruction": "Set explicit allowFrom values and disable group triggers unless they are required."
+    },
+    {
+      "id": "openclaw-scheduled-task",
+      "title": "OpenClaw scheduled or background execution detected",
+      "category": "persistence-automation-risk",
+      "severity": "medium",
+      "confidence": 0.72,
+      "permissions": ["scheduled-execution"],
+      "target_paths": ["**/*"],
+      "patterns": ["cron|scheduled|schedule|background session|auto.?run"],
+      "match_scope": "file",
+      "why_it_matters": "Scheduled agent tasks can start later, when the user is not actively reviewing each action.",
+      "recommended_actions": [
+        "Review scheduled task prompts and allowed tools.",
+        "Disable unused scheduled tasks."
+      ],
+      "recommended_alternatives": [
+        "Use manual run mode for sensitive workflows."
+      ],
+      "migration_instruction": "Disable scheduled execution for this agent until the task prompt and tool permissions are reviewed."
+    }
+  ]
+}

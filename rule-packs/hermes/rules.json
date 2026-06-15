@@ -1,0 +1,44 @@
+{
+  "id": "hermes",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "hermes-openclaw-migration",
+      "title": "Hermes OpenClaw migration artifact detected",
+      "category": "supply-chain-risk",
+      "severity": "medium",
+      "confidence": 0.76,
+      "permissions": ["skill-installation", "credential-access", "persistent-memory"],
+      "target_paths": ["**/*"],
+      "patterns": ["openclaw-imports|migrate-from-openclaw|\\.openclaw"],
+      "why_it_matters": "OpenClaw migration can import skills, settings, memories or credentials into a Hermes environment.",
+      "recommended_actions": [
+        "Review imported skills and credentials.",
+        "Remove migrated artifacts that are no longer needed."
+      ],
+      "recommended_alternatives": [
+        "Import only selected skills instead of full environment migration."
+      ],
+      "migration_instruction": "Review ~/.hermes/skills/openclaw-imports and remove unused imported skills."
+    },
+    {
+      "id": "hermes-gateway-trigger",
+      "title": "Hermes gateway or remote trigger detected",
+      "category": "remote-access-risk",
+      "severity": "medium",
+      "confidence": 0.72,
+      "permissions": ["remote-trigger", "network-access"],
+      "target_paths": ["**/*.json", "**/*.yaml", "**/*.yml"],
+      "patterns": ["gateway|telegram|discord|slack|whatsapp|signal|webhook|allowed_users"],
+      "why_it_matters": "Gateway configuration can allow remote systems or users to trigger agent behavior.",
+      "recommended_actions": [
+        "Restrict allowed users.",
+        "Disable unused gateways."
+      ],
+      "recommended_alternatives": [
+        "Use local CLI-only mode for sensitive workspaces."
+      ],
+      "migration_instruction": "Disable remote gateways until allowed users and token storage are reviewed."
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "id": "core-recommendations",
+  "version": "0.1.0",
+  "status": "draft",
+  "recommendations": [
+    {
+      "id": "pin-local-mcp-server",
+      "title": "Replace moving MCP commands with pinned local MCP servers",
+      "type": "replacement",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.62,
+      "rank": 90,
+      "applies_to": {
+        "rule_ids": ["obs-mcp-stdio-process", "mcp-stdio-process-server"],
+        "permissions_any": ["subprocess-spawn", "mcp-tool-access"]
+      },
+      "recommended_actions": [
+        "Verify the MCP package owner before enabling the server.",
+        "Pin the MCP package or executable version."
+      ],
+      "recommended_alternatives": [
+        "Use a local MCP server pinned to a reviewed version.",
+        "Disable unused MCP servers before running the agent."
+      ],
+      "agent_instruction": "Review this MCP server, pin its package or executable version, and disable it if the current task does not require it.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to pin MCP server versions",
+          "command": "Review all MCP stdio servers in this workspace. Pin package or executable versions, then disable any server that is not required for the current workflow.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Restore the previous MCP configuration from version control or the saved assessment snapshot."
+    },
+    {
+      "id": "replace-remote-mcp-with-local",
+      "title": "Use local pinned MCP for sensitive workspaces",
+      "type": "replacement",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.58,
+      "rank": 86,
+      "applies_to": {
+        "rule_ids": ["obs-mcp-remote-endpoint", "mcp-remote-endpoint"],
+        "categories": ["remote-access-risk"],
+        "permissions_any": ["external-endpoint", "network-access", "mcp-tool-access"]
+      },
+      "recommended_actions": [
+        "Verify who operates the remote MCP endpoint.",
+        "Disable remote MCP endpoints for sensitive local repositories."
+      ],
+      "recommended_alternatives": [
+        "Use a local pinned MCP server for sensitive workspaces.",
+        "Use remote MCP only with explicit tool allowlists."
+      ],
+      "agent_instruction": "Disable remote MCP endpoints in this workspace unless the owner is verified and the exposed tools are explicitly allowlisted.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to remove remote MCP endpoints",
+          "command": "Find remote MCP endpoints in this agent configuration. Disable them for sensitive workspace use, or replace them with local pinned MCP servers.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Re-enable the remote endpoint only after recording its owner, purpose and allowed tools."
+    },
+    {
+      "id": "scope-filesystem-access",
+      "title": "Scope filesystem tools to a dedicated workspace",
+      "type": "configuration",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.64,
+      "rank": 88,
+      "applies_to": {
+        "rule_ids": ["obs-mcp-filesystem-capability", "mcp-filesystem-write"],
+        "permissions_any": ["filesystem-read", "filesystem-write"]
+      },
+      "recommended_actions": [
+        "Limit filesystem access to a dedicated project directory.",
+        "Prefer read-only filesystem tools when inspection is enough."
+      ],
+      "recommended_alternatives": [
+        "Use read-only filesystem tooling.",
+        "Use a temporary workspace copy for untrusted agent runs."
+      ],
+      "agent_instruction": "Restrict filesystem MCP access to the current project workspace and switch to read-only mode when write access is not required.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to scope filesystem access",
+          "command": "Review filesystem tool configuration. Limit it to this project directory and remove write access unless the task explicitly needs it.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Restore the previous path scope only after confirming the agent needs broader file access."
+    },
+    {
+      "id": "lock-down-remote-triggers",
+      "title": "Require allowlists for remote trigger channels",
+      "type": "configuration",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.6,
+      "rank": 84,
+      "applies_to": {
+        "rule_ids": ["obs-remote-trigger-config", "openclaw-remote-channel-policy", "hermes-gateway-trigger"],
+        "permissions_any": ["remote-trigger"]
+      },
+      "recommended_actions": [
+        "Set explicit user or group allowlists for remote channels.",
+        "Disable remote trigger channels in sensitive workspaces."
+      ],
+      "recommended_alternatives": [
+        "Use local-only mode for sensitive work.",
+        "Require manual approval before remote messages start agent actions."
+      ],
+      "agent_instruction": "Disable open remote trigger channels or add explicit allowlists before trusting this agent environment.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to lock down remote triggers",
+          "command": "Find remote trigger channels such as Telegram, Discord, gateway or webhook settings. Disable open triggers or add explicit allowlists.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Keep a copy of the original channel settings before changing trigger policies."
+    },
+    {
+      "id": "disable-unreviewed-schedules",
+      "title": "Disable scheduled agent runs until reviewed",
+      "type": "workflow",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.57,
+      "rank": 76,
+      "applies_to": {
+        "rule_ids": ["obs-scheduled-agent-execution", "openclaw-scheduled-task"],
+        "permissions_any": ["scheduled-execution"]
+      },
+      "recommended_actions": [
+        "Review scheduled prompts and allowed tools.",
+        "Disable schedules that can run without active user review."
+      ],
+      "recommended_alternatives": [
+        "Use manual run mode for sensitive tasks.",
+        "Require confirmation before scheduled tasks execute tools."
+      ],
+      "agent_instruction": "Disable scheduled agent execution until each scheduled prompt and its allowed tools have been reviewed.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to disable unreviewed schedules",
+          "command": "Find scheduled agent tasks. Disable any schedule whose prompt and allowed tools have not been reviewed.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Re-enable only the specific schedule that has a reviewed prompt and tool scope."
+    },
+    {
+      "id": "use-scoped-agent-credentials",
+      "title": "Replace personal credentials with scoped agent credentials",
+      "type": "credential",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.66,
+      "rank": 92,
+      "applies_to": {
+        "rule_ids": ["obs-credential-reference", "core-env-reference", "skill-env-requirement"],
+        "permissions_any": ["credential-access", "env-read"]
+      },
+      "recommended_actions": [
+        "Use dedicated low-privilege credentials for agent environments.",
+        "Remove unused secrets from local agent configuration."
+      ],
+      "recommended_alternatives": [
+        "Use scoped tokens with limited repository or workspace access.",
+        "Use read-only tokens when the agent only needs inspection."
+      ],
+      "agent_instruction": "Replace personal or high-privilege credentials with dedicated low-privilege tokens for this agent environment.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to inventory credential use",
+          "command": "List credentials referenced by this agent environment and propose scoped low-privilege replacements before running tools.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Revoke any temporary token created during review if it is no longer needed."
+    },
+    {
+      "id": "review-shell-execution-policy",
+      "title": "Require review for shell-capable agent behavior",
+      "type": "workflow",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.56,
+      "rank": 82,
+      "applies_to": {
+        "rule_ids": ["core-shell-execution"],
+        "permissions_any": ["shell-execution"]
+      },
+      "recommended_actions": [
+        "Review the command source and argument construction.",
+        "Disable shell access when the workflow does not need it."
+      ],
+      "recommended_alternatives": [
+        "Use a sandboxed command runner.",
+        "Use read-only inspection tools instead of shell execution."
+      ],
+      "agent_instruction": "Do not grant shell execution to this agent until the command source, allowed commands and workspace scope are reviewed.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to restrict shell use",
+          "command": "Review shell execution usage in this environment. Disable shell tools unless the task explicitly requires them, and document allowed commands.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Restore shell access only for reviewed tasks and commands."
+    },
+    {
+      "id": "pin-remote-skill-sources",
+      "title": "Pin remote skill sources to reviewed versions",
+      "type": "replacement",
+      "status": "draft",
+      "source": "manual-curated",
+      "confidence": 0.59,
+      "rank": 80,
+      "applies_to": {
+        "rule_ids": ["core-remote-download", "skill-remote-install-source", "hermes-openclaw-migration"],
+        "permissions_any": ["external-download", "skill-installation"]
+      },
+      "recommended_actions": [
+        "Verify the skill source and maintainer.",
+        "Pin skill sources to a commit SHA or signed release."
+      ],
+      "recommended_alternatives": [
+        "Use bundled skills from a reviewed distribution.",
+        "Use a locally vendored skill copy for sensitive workspaces."
+      ],
+      "agent_instruction": "Replace moving remote skill sources with pinned commits or reviewed release artifacts before enabling the skill.",
+      "one_step_commands": [
+        {
+          "title": "Ask the agent to pin remote skill sources",
+          "command": "Find remote skill install sources. Replace moving branches or latest URLs with pinned commits or reviewed release versions.",
+          "platform": "agent-instruction",
+          "requires_confirmation": true
+        }
+      ],
+      "rollback_note": "Keep the previous skill source URL in the assessment record before replacing it."
+    }
+  ]
+}
