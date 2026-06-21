@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
   "version": "0.1.2",
-  "generated_at": "2026-06-21T15:24:09.597Z",
+  "generated_at": "2026-06-21T15:51:06.687Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -32,8 +32,8 @@
     },
     {
       "path": ".github/workflows/publish-mcp-registry.yml",
-      "bytes": 1074,
-      "sha256": "fd2bed721b5fdf3f1e8b09656b7aac46e333a827bfc7ea6d7756b1bcb2499cd2"
+      "bytes": 1191,
+      "sha256": "934c476448329b73655d78b7da2c0df79014d2e2395223326a2ae2f6f3816412"
     },
     {
       "path": ".gitignore",
