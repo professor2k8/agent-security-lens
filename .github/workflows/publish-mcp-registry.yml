@@ -1,0 +1,35 @@
+name: Publish MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download MCP publisher
+        env:
+          MCP_PUBLISHER_VERSION: v1.7.9
+          MCP_PUBLISHER_SHA256: ab128162b0616090b47cf245afe0a23f3ef08936fdce19074f5ba0a4469281ac
+        run: |
+          set -euo pipefail
+          curl -L --retry 5 --retry-all-errors \
+            -o mcp-publisher_linux_amd64.tar.gz \
+            "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz"
+          echo "${MCP_PUBLISHER_SHA256}  mcp-publisher_linux_amd64.tar.gz" | sha256sum -c -
+          tar -xzf mcp-publisher_linux_amd64.tar.gz
+          chmod +x ./mcp-publisher
+
+      - name: Validate server manifest
+        run: ./mcp-publisher validate server.json
+
+      - name: Publish server manifest
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish server.json

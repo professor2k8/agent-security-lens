@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1.0",
+  "id": "8e56067a093ccb7c",
+  "status": "queued",
+  "submitted_at": "2026-06-21T15:24:13.780Z",
+  "source": "agent-security-mcp",
+  "feedback": {
+    "feedback_type": "helpful",
+    "recorded_at": "2026-06-21T15:24:13.772Z",
+    "component_name": "filesystem",
+    "component_type": "mcp",
+    "decision": "allow_with_restrictions",
+    "rating": 5
+  },
+  "cloud_submission": {
+    "attempted": false,
+    "reason": "cloud_disabled"
+  },
+  "privacy_note": "Decision feedback must not include private code, secrets, tokens, cookies or personal data."
+}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Add public security intelligence index for agents and package readers.
+- Add public MCP, Skill, and Agent Framework decision reports.
+- Add machine-readable public install-decision export.
+- Add GitHub OIDC workflow for publishing to the MCP Registry.
+- Keep internal operations, private sync scripts, queues, and team telemetry out of the public release.
+
 ## 0.1.1
 
 - Connect the MCP to the live AgentSecurityLens Cloud Intelligence API by default.

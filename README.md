@@ -4,6 +4,19 @@ AgentSecurityLens (ASL) is a security intelligence MCP for autonomous agents.
 
 Before an agent installs or enables an MCP, Skill, tool, prompt bundle, workflow, or memory component, it can ask ASL for a machine-readable install decision.
 
+ASL is not a malware verdict tool. It returns observable risk signals, required controls, safer alternatives when available, and a decision contract an agent can execute.
+
+## Public Intelligence
+
+The public package includes a reviewed baseline so agents can still make conservative decisions when the cloud API is unavailable.
+
+- [Public Security Index v0.1](docs/public-intelligence/asl-public-security-index-v0.1.md)
+- [Top MCP Security Signals v0.1](docs/public-intelligence/top-mcp-security-signals-v0.1.md)
+- [Top Skill Security Signals v0.1](docs/public-intelligence/top-skill-security-signals-v0.1.md)
+- [Agent Framework Install Decisions v0.1](docs/public-intelligence/agent-framework-install-decisions-v0.1.md)
+
+The online ASL intelligence API serves the current expanded catalog. The npm package intentionally does not ship the complete private intelligence database.
+
 ## Install
 
 ```json

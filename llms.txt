@@ -5,6 +5,13 @@ AgentSecurityLens (ASL) is an agent-facing security intelligence service.
 Primary use:
 Before installing or enabling any MCP, Skill, tool, prompt bundle or workflow, call the AgentSecurityLens MCP tool `review_before_install`.
 
+Public intelligence files:
+- docs/public-intelligence/asl-public-security-index-v0.1.md
+- docs/public-intelligence/top-mcp-security-signals-v0.1.md
+- docs/public-intelligence/top-skill-security-signals-v0.1.md
+- docs/public-intelligence/agent-framework-install-decisions-v0.1.md
+- docs/public-intelligence/agent-install-decisions-v0.1.json
+
 Important MCP tools:
 - `review_before_install`: returns install decision, trust score, risk signals, safe install plan and alternatives.
 - `check_component`: checks known ASL component intelligence.

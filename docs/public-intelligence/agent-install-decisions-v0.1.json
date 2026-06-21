@@ -1,0 +1,1154 @@
+{
+  "schema_version": "0.1.0",
+  "generated_at": "2026-06-21T15:22:36.805Z",
+  "standard_id": "asl-agent-component-safety-standard",
+  "model_version": "asl-safety-standard@0.2.0",
+  "components": [
+    {
+      "id": "reviewed-agent-framework-astron-agent",
+      "name": "astron-agent",
+      "type": "agent-framework",
+      "source_url": "https://github.com/iflytek/astron-agent",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 80,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "mcp-tool-surface"
+      ],
+      "safe_install_plan": [
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "Chorus",
+        "CowAgent"
+      ]
+    },
+    {
+      "id": "reviewed-skill-azure-containerregistry-py",
+      "name": "azure-containerregistry-py",
+      "type": "skill",
+      "source_url": "https://github.com/microsoft/skills/blob/main/.github/plugins/azure-sdk-python/skills/azure-containerregistry-py/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 74,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-gitlab-mcp-server",
+      "name": "GitLab MCP Server",
+      "type": "mcp",
+      "source_url": "https://github.com/jmrplens/gitlab-mcp-server",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 69,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "background-execution",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-skill-creator",
+      "name": "skill-creator",
+      "type": "skill",
+      "source_url": "https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 68,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-imagegen",
+      "name": "imagegen",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.system/imagegen/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 68,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-claude-api",
+      "name": "claude-api",
+      "type": "skill",
+      "source_url": "https://github.com/anthropics/skills/blob/main/skills/claude-api/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 64,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed",
+        "background-execution"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-cli-creator",
+      "name": "cli-creator",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/cli-creator/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 64,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-cloudflare-deploy",
+      "name": "cloudflare-deploy",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/cloudflare-deploy/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 64,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed",
+        "background-execution"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-agent-framework-oh-my-agent",
+      "name": "oh-my-agent",
+      "type": "agent-framework",
+      "source_url": "https://github.com/first-fluke/oh-my-agent",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 62,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "network-access",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "Chorus",
+        "CowAgent"
+      ]
+    },
+    {
+      "id": "reviewed-skill-netlify-deploy",
+      "name": "netlify-deploy",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/netlify-deploy/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 62,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-openai-docs",
+      "name": "openai-docs",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/openai-docs/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 61,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "license-undisclosed",
+        "shell-execution"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Require confirmation for every command and run inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-mcp-suno",
+      "name": "mcp-suno",
+      "type": "mcp",
+      "source_url": "https://github.com/AceDataCloud/SunoMCP",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 60,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-midjourney",
+      "name": "Midjourney",
+      "type": "mcp",
+      "source_url": "https://github.com/AceDataCloud/MidjourneyMCP",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 60,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-mcp-nanobanana-pro",
+      "name": "mcp-nanobanana-pro",
+      "type": "mcp",
+      "source_url": "https://github.com/AceDataCloud/NanoBananaMCP",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 60,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-mcp-seedance",
+      "name": "mcp-seedance",
+      "type": "mcp",
+      "source_url": "https://github.com/AceDataCloud/SeedanceMCP",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 60,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-arcadia-finance",
+      "name": "Arcadia Finance",
+      "type": "mcp",
+      "source_url": "https://github.com/arcadia-finance/mcp-server",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 56,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-agent-framework-chorus",
+      "name": "Chorus",
+      "type": "agent-framework",
+      "source_url": "https://github.com/Chorus-AIDLC/Chorus",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 53,
+      "decision": "ask_user",
+      "risk_signals": [
+        "license-undisclosed",
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "LangGraph",
+        "AutoGen",
+        "CrewAI"
+      ]
+    },
+    {
+      "id": "reviewed-agent-framework-cua",
+      "name": "cua",
+      "type": "agent-framework",
+      "source_url": "https://github.com/trycua/cua",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 52,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "background-execution",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "Chorus",
+        "CowAgent"
+      ]
+    },
+    {
+      "id": "reviewed-skill-playwright-interactive",
+      "name": "playwright-interactive",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/playwright-interactive/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 51,
+      "decision": "ask_user",
+      "risk_signals": [
+        "license-undisclosed",
+        "browser-access",
+        "dynamic-code-execution"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Use an isolated browser profile without personal cookies or sessions.",
+        "Disable dynamic code paths when possible and isolate execution from host credentials.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-skill-render-deploy",
+      "name": "render-deploy",
+      "type": "skill",
+      "source_url": "https://github.com/openai/skills/blob/main/skills/.curated/render-deploy/SKILL.md",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 48,
+      "decision": "ask_user",
+      "risk_signals": [
+        "license-undisclosed",
+        "background-execution",
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Confirm usage rights and provenance before redistribution or enterprise deployment.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-synapse-layer-continuous-consciousness-infrastructure",
+      "name": "Synapse Layer Continuous Consciousness Infrastructure",
+      "type": "mcp",
+      "source_url": "https://github.com/SynapseLayer/synapse-layer",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 47,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "network-access",
+        "background-execution",
+        "mcp-tool-surface",
+        "remote-code-install"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-lune-research",
+      "name": "Lune Research",
+      "type": "mcp",
+      "source_url": "https://github.com/RetrogradeLabs/lune-mcp-server",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 44,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "mcp-tool-surface",
+        "background-execution"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-docspace",
+      "name": "docspace",
+      "type": "mcp",
+      "source_url": "https://github.com/ONLYOFFICE/docspace-mcp",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 40,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "network-access",
+        "mcp-tool-surface",
+        "background-execution"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-agent-framework-agent-s",
+      "name": "Agent-S",
+      "type": "agent-framework",
+      "source_url": "https://github.com/simular-ai/Agent-S",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 40,
+      "decision": "ask_user",
+      "risk_signals": [
+        "credential-access",
+        "filesystem-write",
+        "background-execution",
+        "browser-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Restrict write access to a dedicated workspace or temporary copy.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Use an isolated browser profile without personal cookies or sessions.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "Chorus"
+      ]
+    },
+    {
+      "id": "reviewed-mcp-quantrisk",
+      "name": "QuantRisk",
+      "type": "mcp",
+      "source_url": "https://github.com/78degrees/mcp-server",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 34,
+      "decision": "avoid",
+      "risk_signals": [
+        "network-access",
+        "dynamic-code-execution",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Disable dynamic code paths when possible and isolate execution from host credentials.",
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-agent-framework-openagentscontrol",
+      "name": "OpenAgentsControl",
+      "type": "agent-framework",
+      "source_url": "https://github.com/darrenhinde/OpenAgentsControl",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 34,
+      "decision": "avoid",
+      "risk_signals": [
+        "credential-access",
+        "dynamic-code-execution",
+        "filesystem-write",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Disable dynamic code paths when possible and isolate execution from host credentials.",
+        "Restrict write access to a dedicated workspace or temporary copy.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": [
+        "Chorus",
+        "CowAgent"
+      ]
+    },
+    {
+      "id": "reviewed-mcp-mcp",
+      "name": "mcp",
+      "type": "mcp",
+      "source_url": "https://github.com/apideck-libraries/mcp",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 18,
+      "decision": "avoid",
+      "risk_signals": [
+        "credential-access",
+        "network-access",
+        "shell-execution",
+        "mcp-tool-surface",
+        "dynamic-code-execution"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Require confirmation for every command and run inside an isolated environment.",
+        "Disable dynamic code paths when possible and isolate execution from host credentials.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-mcp-cathedral-persistent-memory-for-ai-agents",
+      "name": "Cathedral Persistent Memory for AI Agents",
+      "type": "mcp",
+      "source_url": "https://github.com/AILIFE1/Cathedral",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 16,
+      "decision": "avoid",
+      "risk_signals": [
+        "remote-code-install",
+        "credential-access",
+        "prompt-injection-pattern",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Pin the exact package version, release or commit and install only inside an isolated environment.",
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Review instruction precedence and require confirmation before tool actions caused by external content.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": []
+    },
+    {
+      "id": "reviewed-agent-framework-lamda",
+      "name": "lamda",
+      "type": "agent-framework",
+      "source_url": "https://github.com/firerpa/lamda",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 14,
+      "decision": "avoid",
+      "risk_signals": [
+        "credential-access",
+        "filesystem-write",
+        "dynamic-code-execution",
+        "shell-execution",
+        "background-execution",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Restrict write access to a dedicated workspace or temporary copy.",
+        "Disable dynamic code paths when possible and isolate execution from host credentials.",
+        "Require confirmation for every command and run inside an isolated environment.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": [
+        "Chorus",
+        "CowAgent"
+      ]
+    },
+    {
+      "id": "reviewed-agent-framework-cowagent",
+      "name": "CowAgent",
+      "type": "agent-framework",
+      "source_url": "https://github.com/zhayujie/CowAgent",
+      "intelligence_state": "strict_reviewed",
+      "trust_score": 6,
+      "decision": "avoid",
+      "risk_signals": [
+        "credential-access",
+        "browser-access",
+        "shell-execution",
+        "background-execution",
+        "filesystem-write",
+        "network-access",
+        "mcp-tool-surface"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated least-privilege credential with explicit scope and rotation.",
+        "Use an isolated browser profile without personal cookies or sessions.",
+        "Require confirmation for every command and run inside an isolated environment.",
+        "Disable unattended triggers until audit logging and an explicit stop control are configured.",
+        "Restrict write access to a dedicated workspace or temporary copy.",
+        "Allowlist required remote endpoints and deny undeclared destinations.",
+        "Grant only the permissions required for the current task and remove unused capabilities."
+      ],
+      "agent_action": "Do not install automatically; choose an alternative or request explicit human approval.",
+      "alternatives": [
+        "Chorus"
+      ]
+    },
+    {
+      "id": "mcp-filesystem",
+      "name": "filesystem",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 74,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "filesystem-read",
+        "filesystem-write",
+        "subprocess-spawn"
+      ],
+      "safe_install_plan": [
+        "Restrict filesystem scope to the current project directory.",
+        "Prefer read-only mode when the task only needs inspection.",
+        "Pin the package or executable version before enabling it."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "read-only filesystem tooling",
+        "temporary workspace copy"
+      ]
+    },
+    {
+      "id": "agent-framework-langgraph",
+      "name": "LangGraph",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 73,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "agent-orchestration",
+        "tool-chaining",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Review graph nodes that can call tools or external APIs.",
+        "Apply allowlists to write-capable tools.",
+        "Log state transitions for autonomous workflows."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "read-only graph execution",
+        "manual approval node"
+      ]
+    },
+    {
+      "id": "agent-framework-autogen",
+      "name": "AutoGen",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 72,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "network-access",
+        "code-execution",
+        "multi-agent-delegation"
+      ],
+      "safe_install_plan": [
+        "Restrict code execution tools until the task requires them.",
+        "Use scoped API keys and avoid sharing personal credentials across agents.",
+        "Log delegated tool calls for later review."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "single-agent review mode",
+        "tool allowlist policy"
+      ]
+    },
+    {
+      "id": "agent-framework-crewai",
+      "name": "CrewAI",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 70,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "network-access",
+        "multi-agent-delegation",
+        "tool-chaining"
+      ],
+      "safe_install_plan": [
+        "Review tool assignments before running autonomous crews.",
+        "Use least-privilege API credentials per task.",
+        "Disable write-capable tools unless needed."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "read-only tool crew",
+        "manual approval for write actions"
+      ]
+    },
+    {
+      "id": "mcp-brave-search",
+      "name": "brave-search",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 69,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "network-access",
+        "external-api",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Use a scoped search API key.",
+        "Do not send private workspace content as search queries by default.",
+        "Log outbound query categories for later review."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "manual search handoff",
+        "restricted web search tool"
+      ]
+    },
+    {
+      "id": "agent-platform-dify",
+      "name": "Dify",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 67,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "workflow-automation",
+        "network-access",
+        "plugin-access",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Review connected tools, plugins and workflow triggers before autonomous execution.",
+        "Use scoped credentials for each integration.",
+        "Separate test workflows from production workflows."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "restricted workflow workspace",
+        "manual approval for production actions"
+      ]
+    },
+    {
+      "id": "memory-vector-store",
+      "name": "vector-memory-store",
+      "type": "memory",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 66,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "data-retention",
+        "network-access",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Do not store secrets or personal data in long-term memory.",
+        "Separate project memory from personal memory.",
+        "Review retention and deletion controls before enabling."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "ephemeral task memory",
+        "local encrypted memory store"
+      ]
+    },
+    {
+      "id": "mcp-sqlite",
+      "name": "sqlite",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 66,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "filesystem-write",
+        "database-access",
+        "local-file-access"
+      ],
+      "safe_install_plan": [
+        "Use a copied database file for autonomous analysis.",
+        "Avoid write mode unless the task requires mutation.",
+        "Back up the database before enabling agent access."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "read-only copied database",
+        "manual SQL export"
+      ]
+    },
+    {
+      "id": "workflow-activepieces",
+      "name": "Activepieces",
+      "type": "workflow",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 64,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "workflow-automation",
+        "third-party-integration",
+        "credential-access",
+        "background-execution"
+      ],
+      "safe_install_plan": [
+        "Review all connected apps and triggers.",
+        "Disable production write actions until reviewed.",
+        "Use test accounts or scoped app credentials for agents."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "manual workflow approval",
+        "restricted integration workspace"
+      ]
+    },
+    {
+      "id": "agent-framework-openhands",
+      "name": "OpenHands",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 63,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "shell-execution",
+        "filesystem-write",
+        "network-access",
+        "credential-access"
+      ],
+      "safe_install_plan": [
+        "Run inside a dedicated workspace or container.",
+        "Do not mount personal home directories by default.",
+        "Use scoped credentials and review tool permissions before autonomous execution."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "containerized agent workspace",
+        "manual approval mode"
+      ]
+    },
+    {
+      "id": "tool-composio",
+      "name": "Composio",
+      "type": "tool",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 62,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "third-party-tool-access",
+        "network-access",
+        "credential-access",
+        "multi-app-delegation"
+      ],
+      "safe_install_plan": [
+        "Enable only the app integrations required for the current task.",
+        "Use scoped OAuth grants or test accounts.",
+        "Require user confirmation before write actions across third-party apps."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "single-app scoped MCP",
+        "manual OAuth approval workflow"
+      ]
+    },
+    {
+      "id": "tool-docker-runtime",
+      "name": "docker-runtime",
+      "type": "tool",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 60,
+      "decision": "allow_with_restrictions",
+      "risk_signals": [
+        "docker-runtime",
+        "filesystem-write",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Avoid privileged containers.",
+        "Mount only task-specific directories.",
+        "Pin image digests or trusted tags before execution."
+      ],
+      "agent_action": "Install only after applying every safe-install control.",
+      "alternatives": [
+        "rootless container runtime",
+        "temporary container workspace"
+      ]
+    },
+    {
+      "id": "mcp-github",
+      "name": "github",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 68,
+      "decision": "ask_user",
+      "risk_signals": [
+        "network-access",
+        "credential-access",
+        "repository-write"
+      ],
+      "safe_install_plan": [
+        "Use a scoped token with the minimum repository permissions.",
+        "Prefer read-only repository permissions unless write access is required.",
+        "Do not pass personal high-privilege tokens to autonomous agents."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "scoped read-only GitHub token",
+        "repository-specific bot account"
+      ]
+    },
+    {
+      "id": "browser-control-skill",
+      "name": "browser-control",
+      "type": "skill",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 61,
+      "decision": "ask_user",
+      "risk_signals": [
+        "browser-access",
+        "network-access",
+        "credential-exposure"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated browser profile for autonomous agents.",
+        "Do not expose personal cookies or logged-in sessions by default.",
+        "Require user confirmation before submitting forms or transferring data."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "sandbox browser profile",
+        "read-only page inspection tool"
+      ]
+    },
+    {
+      "id": "mcp-slack",
+      "name": "slack",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 59,
+      "decision": "ask_user",
+      "risk_signals": [
+        "network-access",
+        "credential-access",
+        "message-read",
+        "message-write"
+      ],
+      "safe_install_plan": [
+        "Use a workspace-scoped bot token with minimum channels.",
+        "Disable write actions until the user explicitly approves them.",
+        "Do not expose private channels by default."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "read-only Slack bot token",
+        "manual message approval"
+      ]
+    },
+    {
+      "id": "workflow-github-actions-agent",
+      "name": "github-actions-agent-workflow",
+      "type": "workflow",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 58,
+      "decision": "ask_user",
+      "risk_signals": [
+        "background-execution",
+        "credential-access",
+        "repository-write",
+        "network-access"
+      ],
+      "safe_install_plan": [
+        "Review scheduled and workflow_dispatch triggers.",
+        "Use repository-scoped tokens with minimum permissions.",
+        "Require manual approval before publishing releases or writing secrets."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "read-only CI workflow",
+        "manual dispatch with restricted token"
+      ]
+    },
+    {
+      "id": "mcp-postgres",
+      "name": "postgres",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 57,
+      "decision": "ask_user",
+      "risk_signals": [
+        "database-access",
+        "credential-access",
+        "data-exposure-risk"
+      ],
+      "safe_install_plan": [
+        "Use a read-only database role unless write access is explicitly required.",
+        "Connect only to a task-specific database or replica.",
+        "Do not expose production credentials to autonomous agents."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "read-only database replica",
+        "query review workflow"
+      ]
+    },
+    {
+      "id": "agent-framework-openmanus",
+      "name": "OpenManus",
+      "type": "agent-framework",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 56,
+      "decision": "ask_user",
+      "risk_signals": [
+        "shell-execution",
+        "network-access",
+        "browser-access",
+        "unknown-source"
+      ],
+      "safe_install_plan": [
+        "Require user confirmation before enabling autonomous tool execution.",
+        "Use a separate browser profile and isolated workspace.",
+        "Record exact source URL and version before installation."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "restricted autonomous-agent profile",
+        "manual tool approval workflow"
+      ]
+    },
+    {
+      "id": "workflow-n8n-templates",
+      "name": "n8n-workflow-templates",
+      "type": "workflow",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 55,
+      "decision": "ask_user",
+      "risk_signals": [
+        "workflow-import",
+        "credential-access",
+        "background-execution",
+        "third-party-integration"
+      ],
+      "safe_install_plan": [
+        "Inspect imported workflow nodes before enabling.",
+        "Remove embedded credentials or webhook secrets.",
+        "Run imported workflows in a test workspace first."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "manual workflow rebuild",
+        "restricted workflow import"
+      ]
+    },
+    {
+      "id": "mcp-puppeteer-browser",
+      "name": "puppeteer-browser",
+      "type": "mcp",
+      "source_url": null,
+      "intelligence_state": "curated_baseline",
+      "trust_score": 54,
+      "decision": "ask_user",
+      "risk_signals": [
+        "browser-access",
+        "network-access",
+        "credential-access",
+        "form-submission"
+      ],
+      "safe_install_plan": [
+        "Use a dedicated browser profile without personal cookies.",
+        "Require confirmation before form submission, checkout, transfer or login actions.",
+        "Block access to password managers and personal sessions."
+      ],
+      "agent_action": "Pause automatic installation and ask the user before enabling this component.",
+      "alternatives": [
+        "read-only page inspection",
+        "sandbox browser profile"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.1",
-  "generated_at": "2026-06-15T14:53:25.682Z",
+  "version": "0.1.2",
+  "generated_at": "2026-06-21T15:24:09.597Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -31,6 +31,11 @@
       "sha256": "86ac5975ffafc51f4045fbe6cb9959f938fa52c0ed59d87f294d8d701ab01a50"
     },
     {
+      "path": ".github/workflows/publish-mcp-registry.yml",
+      "bytes": 1074,
+      "sha256": "fd2bed721b5fdf3f1e8b09656b7aac46e333a827bfc7ea6d7756b1bcb2499cd2"
+    },
+    {
       "path": ".gitignore",
       "bytes": 80,
       "sha256": "f2735d6dfed0a7ba04b25dbde8d23782664d4da2d53983341da6e443615c7a7f"
@@ -38,7 +43,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1287,
-      "sha256": "8a872855f7e05655ca73c60a14fa6cc1d633ff9676284316de70c0a45cb9b824"
+      "sha256": "befc15416fd0b04b1cca08796e3b98c9062ffe4717791d570e9c452d132acfc0"
     },
     {
       "path": ".npmignore",
@@ -47,8 +52,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 892,
-      "sha256": "590336c3cfb72e2439b6d6c13fb640c5a937336a66003d0f8b0effd80f7084c1"
+      "bytes": 1261,
+      "sha256": "8bfa163446c5354f78427edd24c8419cc435ee024913ff08266f75a59cd6c651"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -72,8 +77,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4950,
-      "sha256": "04eb18598c417556f09c0672b6642ba84190fa6a09aaae83c686ae1aa45e4556"
+      "bytes": 5829,
+      "sha256": "e4bf0eacff185b9bdb2314b66ac7a2432b35f51ef8c7b010231bdc08809f7f35"
     },
     {
       "path": "SECURITY.md",
@@ -119,6 +124,31 @@
       "path": "docs/asl-agent-component-safety-standard-v0.2.md",
       "bytes": 3044,
       "sha256": "8411a4bfacdd0f416fc79674e060524a03082aca18193347ef934771e06a65f1"
+    },
+    {
+      "path": "docs/public-intelligence/agent-framework-install-decisions-v0.1.md",
+      "bytes": 8855,
+      "sha256": "3f3edfd42a69f987bd90c2cb2867bb1f14db26877305bd522941134ded149a01"
+    },
+    {
+      "path": "docs/public-intelligence/agent-install-decisions-v0.1.json",
+      "bytes": 43605,
+      "sha256": "93fc1945488747e22f064e0bf3755d95e1558f41ebbd001322ec46c6c719fa3e"
+    },
+    {
+      "path": "docs/public-intelligence/asl-public-security-index-v0.1.md",
+      "bytes": 11404,
+      "sha256": "828fdcd367057a3b5583a80dc095b5e5365ef5e5f947ccf6ba95d964a1f50403"
+    },
+    {
+      "path": "docs/public-intelligence/top-mcp-security-signals-v0.1.md",
+      "bytes": 11894,
+      "sha256": "bd0cddfbb21bc55ec969df11e175fa0353ec4f855b86469bb7f971caf8ad6876"
+    },
+    {
+      "path": "docs/public-intelligence/top-skill-security-signals-v0.1.md",
+      "bytes": 7452,
+      "sha256": "7af2e8f359c4c5df94ea60092c40f8abde9d41f1b3d815bc023324730a676bda"
     },
     {
       "path": "examples/dot-hermes/.hermes/config.json",
@@ -172,13 +202,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 1386,
-      "sha256": "55576fd6c869f40ae2a41017dc7978bd1bef33c642cdfa509525d2a218eebd9d"
+      "bytes": 1727,
+      "sha256": "adcbc320f9c5e13e4b71b57f47337d06008fdbfe567b39902643b9a3d1c9e010"
     },
     {
       "path": "package.json",
       "bytes": 1973,
-      "sha256": "c151b9873a883b6390d206b5e85b6b6e104aa1f30594d1c02deea390c6545780"
+      "sha256": "e2227a4030693158a795e445a5330956eb96e003eeba7a7c2ba5e1e2b0b70e9a"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -308,7 +338,7 @@
     {
       "path": "server.json",
       "bytes": 1287,
-      "sha256": "8a872855f7e05655ca73c60a14fa6cc1d633ff9676284316de70c0a45cb9b824"
+      "sha256": "befc15416fd0b04b1cca08796e3b98c9062ffe4717791d570e9c452d132acfc0"
     },
     {
       "path": "src/assessment/assess.mjs",
