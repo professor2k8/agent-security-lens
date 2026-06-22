@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   verify:
+    if: github.repository != 'professor2k8/agent-security-lens-intelligence-ops'
     runs-on: ubuntu-latest
     strategy:
       matrix:

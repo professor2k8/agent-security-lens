@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+- Improve agent-first installation copy in the README.
+- Add a dedicated Agent install guide with required pre-install review flow.
+- Expand npm discovery keywords for safe install, trust check, MCP security and Skill security searches.
+- Update the MCP Registry manifest description for safe-install and trust-check discovery.
+
 ## 0.1.2
 
 - Add public security intelligence index for agents and package readers.

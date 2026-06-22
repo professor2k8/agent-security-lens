@@ -6,6 +6,32 @@ Before an agent installs or enables an MCP, Skill, tool, prompt bundle, workflow
 
 ASL is not a malware verdict tool. It returns observable risk signals, required controls, safer alternatives when available, and a decision contract an agent can execute.
 
+## Agent Quick Install
+
+Add ASL as a pre-install trust check MCP:
+
+```json
+{
+  "mcpServers": {
+    "agent-security-lens": {
+      "command": "npx",
+      "args": ["-y", "agent-security-lens"]
+    }
+  }
+}
+```
+
+Then give the agent this policy:
+
+```text
+Before installing or enabling any MCP, Skill, tool, prompt bundle,
+workflow or memory component, call AgentSecurityLens review_before_install.
+Follow agent_decision_contract and agent_actions exactly.
+Never submit private source code, secrets, tokens, cookies or file contents.
+```
+
+See [Agent install guide](docs/agent-install.md) for Claude Desktop, Cursor, Codex-style and generic MCP configurations.
+
 ## Public Intelligence
 
 The public package includes a reviewed baseline so agents can still make conservative decisions when the cloud API is unavailable.
@@ -17,7 +43,7 @@ The public package includes a reviewed baseline so agents can still make conserv
 
 The online ASL intelligence API serves the current expanded catalog. The npm package intentionally does not ship the complete private intelligence database.
 
-## Install
+## Basic MCP Config
 
 ```json
 {
@@ -127,7 +153,7 @@ Agents must execute the structured fields rather than infer policy from prose.
 
 ASL evaluates observable behavior and installation context. It does not label a component malicious without evidence.
 
-The v0.1.0 public fallback contains 30 strict reviewed records and 20 curated fallback baselines. Automatic assessments are available through the online service but cannot authorize automatic installation.
+The public fallback contains strict reviewed records and curated fallback baselines. Automatic assessments are available through the online service but cannot authorize automatic installation.
 
 ## Privacy
 

@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.2",
-  "generated_at": "2026-06-21T15:51:06.687Z",
+  "version": "0.1.3",
+  "generated_at": "2026-06-22T08:01:37.097Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -27,13 +27,13 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 444,
-      "sha256": "86ac5975ffafc51f4045fbe6cb9959f938fa52c0ed59d87f294d8d701ab01a50"
+      "bytes": 525,
+      "sha256": "7625c8b17057d0d64234c7e8c49894d1d4ca632c9a44b8d48f871df1d626c0f1"
     },
     {
       "path": ".github/workflows/publish-mcp-registry.yml",
-      "bytes": 1191,
-      "sha256": "934c476448329b73655d78b7da2c0df79014d2e2395223326a2ae2f6f3816412"
+      "bytes": 1272,
+      "sha256": "46dd8937b9a36517604fff2a9f6f29ed22a115536719189a01ef94edddc1687c"
     },
     {
       "path": ".gitignore",
@@ -42,8 +42,8 @@
     },
     {
       "path": ".mcp/server.json",
-      "bytes": 1287,
-      "sha256": "befc15416fd0b04b1cca08796e3b98c9062ffe4717791d570e9c452d132acfc0"
+      "bytes": 1316,
+      "sha256": "cff25d18a7c6d1259d400599537de259731224109f4cf16129cd4984027b16ab"
     },
     {
       "path": ".npmignore",
@@ -52,8 +52,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1261,
-      "sha256": "8bfa163446c5354f78427edd24c8419cc435ee024913ff08266f75a59cd6c651"
+      "bytes": 1600,
+      "sha256": "990eb963697607ee08be8f8a24ba24f78c0e4ce38c510509b20f3920cdc7fa91"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -77,8 +77,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5829,
-      "sha256": "e4bf0eacff185b9bdb2314b66ac7a2432b35f51ef8c7b010231bdc08809f7f35"
+      "bytes": 6481,
+      "sha256": "0e48df39c037cc156db7b958aa7d8dab70f6c212a984a93c1f3f2f7a27944ab6"
     },
     {
       "path": "SECURITY.md",
@@ -119,6 +119,11 @@
       "path": "data/trust/signal-taxonomy.json",
       "bytes": 4654,
       "sha256": "d060bad4b4830a98013fed6dd23051c271dd92317873dcabbde01e5ff1f840b9"
+    },
+    {
+      "path": "docs/agent-install.md",
+      "bytes": 2505,
+      "sha256": "239d8c5fa18ce0fdd1066115e34a6409f7f9d1dc4c486edba7887f7bc752ff2b"
     },
     {
       "path": "docs/asl-agent-component-safety-standard-v0.2.md",
@@ -202,13 +207,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 1727,
-      "sha256": "adcbc320f9c5e13e4b71b57f47337d06008fdbfe567b39902643b9a3d1c9e010"
+      "bytes": 1751,
+      "sha256": "b53f08e07a8a76e5c0054c240dd3ff7a9e8e006b02ae1a897bb4117e97c7f85c"
     },
     {
       "path": "package.json",
-      "bytes": 1973,
-      "sha256": "e2227a4030693158a795e445a5330956eb96e003eeba7a7c2ba5e1e2b0b70e9a"
+      "bytes": 2156,
+      "sha256": "2fb0be3924a8d9b20e70e92818f03f078a2f75baed9e2fd780b0accb1300d025"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -337,8 +342,8 @@
     },
     {
       "path": "server.json",
-      "bytes": 1287,
-      "sha256": "befc15416fd0b04b1cca08796e3b98c9062ffe4717791d570e9c452d132acfc0"
+      "bytes": 1316,
+      "sha256": "cff25d18a7c6d1259d400599537de259731224109f4cf16129cd4984027b16ab"
     },
     {
       "path": "src/assessment/assess.mjs",
