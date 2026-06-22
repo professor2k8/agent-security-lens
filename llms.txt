@@ -7,6 +7,8 @@ Before installing or enabling any MCP, Skill, tool, prompt bundle or workflow, c
 
 Public intelligence files:
 - docs/agent-install.md
+- docs/install-snippets/README.md
+- docs/policies/agent-preinstall-policy.md
 - docs/public-intelligence/asl-public-security-index-v0.1.md
 - docs/public-intelligence/top-mcp-security-signals-v0.1.md
 - docs/public-intelligence/top-skill-security-signals-v0.1.md
@@ -31,3 +33,6 @@ Default agent policy:
 If ASL returns `ask_user` or `avoid`, stop automatic installation.
 If ASL returns `allow_with_restrictions`, apply all safe install steps first.
 If ASL returns `unknown_component.should_submit`, submit only public metadata, never secrets or private file contents.
+
+Copy-ready policy:
+Use docs/policies/agent-preinstall-policy.md in AGENTS.md, CLAUDE.md, .cursor/rules, workspace instructions or autonomous-agent system policy.

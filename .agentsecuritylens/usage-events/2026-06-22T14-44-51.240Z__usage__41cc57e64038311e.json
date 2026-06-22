@@ -1,12 +1,12 @@
 {
   "schema_version": "0.1.0",
-  "id": "f87836327d4a9c87",
+  "id": "41cc57e64038311e",
   "status": "queued",
-  "submitted_at": "2026-06-22T08:01:49.979Z",
+  "submitted_at": "2026-06-22T14:44:51.240Z",
   "source": "agent-security-mcp",
   "event": {
     "event_type": "install_outcome",
-    "recorded_at": "2026-06-22T08:01:49.952Z",
+    "recorded_at": "2026-06-22T14:44:51.233Z",
     "component_name": "filesystem",
     "component_type": "mcp",
     "decision": "allow_with_restrictions",

@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.3",
-  "generated_at": "2026-06-22T08:01:37.097Z",
+  "version": "0.1.4",
+  "generated_at": "2026-06-22T14:44:46.552Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -43,7 +43,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1316,
-      "sha256": "cff25d18a7c6d1259d400599537de259731224109f4cf16129cd4984027b16ab"
+      "sha256": "207a4751a1bce53409434134d14a9a7ee955aafe77aeb5c50c7448f832045675"
     },
     {
       "path": ".npmignore",
@@ -52,8 +52,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1600,
-      "sha256": "990eb963697607ee08be8f8a24ba24f78c0e4ce38c510509b20f3920cdc7fa91"
+      "bytes": 2051,
+      "sha256": "b236067b6a60d16ae7ffc080030dc4b4d6a41ba2035e0de4c0f81bf3fe05f013"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -77,8 +77,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6481,
-      "sha256": "0e48df39c037cc156db7b958aa7d8dab70f6c212a984a93c1f3f2f7a27944ab6"
+      "bytes": 6626,
+      "sha256": "b19f05cbc38747ca63ccbd40595621a4dd618fe644bfff9d18e33cf290e33d5a"
     },
     {
       "path": "SECURITY.md",
@@ -129,6 +129,56 @@
       "path": "docs/asl-agent-component-safety-standard-v0.2.md",
       "bytes": 3044,
       "sha256": "8411a4bfacdd0f416fc79674e060524a03082aca18193347ef934771e06a65f1"
+    },
+    {
+      "path": "docs/install-snippets/README.md",
+      "bytes": 1375,
+      "sha256": "c94f6df92860fe936d9bc72a338296c7c90eb72c6e1f31ccc10f90db728479ff"
+    },
+    {
+      "path": "docs/install-snippets/claude-desktop.json",
+      "bytes": 269,
+      "sha256": "02f32748c50819c19d8ae115465668a9918f25ee8996ff04ceb385279ec10116"
+    },
+    {
+      "path": "docs/install-snippets/codex-mcp.json",
+      "bytes": 269,
+      "sha256": "02f32748c50819c19d8ae115465668a9918f25ee8996ff04ceb385279ec10116"
+    },
+    {
+      "path": "docs/install-snippets/cursor.json",
+      "bytes": 269,
+      "sha256": "02f32748c50819c19d8ae115465668a9918f25ee8996ff04ceb385279ec10116"
+    },
+    {
+      "path": "docs/install-snippets/generic-mcp-client.json",
+      "bytes": 130,
+      "sha256": "aede3150b914b1c51976d0af11bd341d9f754a3bb3e93771a647a1ae0935e86f"
+    },
+    {
+      "path": "docs/install-snippets/openclaw.md",
+      "bytes": 483,
+      "sha256": "9f651a536a317614c51be627c7ed2ae9664333d68086c4394500c229d2a7c4fb"
+    },
+    {
+      "path": "docs/install-snippets/openhands.md",
+      "bytes": 517,
+      "sha256": "f5dae1f83ad23b80513c50af44b9df513a870bb4ca1a78c825d97c0202dfca9b"
+    },
+    {
+      "path": "docs/install-snippets/openmanus.md",
+      "bytes": 478,
+      "sha256": "b32e05059c36c6122f665951e1be5573d790c9ce271fa084fd5263f26ecd657e"
+    },
+    {
+      "path": "docs/install-snippets/vscode.json",
+      "bytes": 289,
+      "sha256": "b94265ea3515d9f28b1f51d5d13f242815e071a6224643d6555fab21c1722ca6"
+    },
+    {
+      "path": "docs/policies/agent-preinstall-policy.md",
+      "bytes": 2295,
+      "sha256": "e3659d89ec0143758b38ed760070c317bea0f1981328541b93ebea2b4988c273"
     },
     {
       "path": "docs/public-intelligence/agent-framework-install-decisions-v0.1.md",
@@ -207,13 +257,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 1751,
-      "sha256": "b53f08e07a8a76e5c0054c240dd3ff7a9e8e006b02ae1a897bb4117e97c7f85c"
+      "bytes": 1991,
+      "sha256": "4bf6ae7fdd917f8d45e097e65fef32d7c051f500dfcd922be087eab74a3bfebe"
     },
     {
       "path": "package.json",
       "bytes": 2156,
-      "sha256": "2fb0be3924a8d9b20e70e92818f03f078a2f75baed9e2fd780b0accb1300d025"
+      "sha256": "dbe2016295ba12a8f38dbf441dd1f908414ceb06e98cc0b6580adf3576045b09"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -343,7 +393,7 @@
     {
       "path": "server.json",
       "bytes": 1316,
-      "sha256": "cff25d18a7c6d1259d400599537de259731224109f4cf16129cd4984027b16ab"
+      "sha256": "207a4751a1bce53409434134d14a9a7ee955aafe77aeb5c50c7448f832045675"
     },
     {
       "path": "src/assessment/assess.mjs",

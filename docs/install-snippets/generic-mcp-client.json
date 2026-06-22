@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "agent-security-lens": {
+      "command": "npx",
+      "args": ["-y", "agent-security-lens"]
+    }
+  }
+}
+

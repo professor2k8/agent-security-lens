@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4
+
+- Add copy-ready MCP install snippets for Claude Desktop, Cursor, VS Code, Codex-style clients and generic MCP clients.
+- Add OpenHands, OpenManus and OpenClaw pre-install safety snippets.
+- Add reusable Agent pre-install policy for `AGENTS.md`, `CLAUDE.md`, Cursor rules and workspace instructions.
+- Link Agent exposure assets from README and `llms.txt`.
+- Add private exposure targets and daily exposure brief generation for operations.
+
 ## 0.1.3
 
 - Improve agent-first installation copy in the README.

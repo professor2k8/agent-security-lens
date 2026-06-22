@@ -32,6 +32,11 @@ Never submit private source code, secrets, tokens, cookies or file contents.
 
 See [Agent install guide](docs/agent-install.md) for Claude Desktop, Cursor, Codex-style and generic MCP configurations.
 
+Copy-ready files:
+
+- [Install snippets](docs/install-snippets/README.md)
+- [Agent pre-install policy](docs/policies/agent-preinstall-policy.md)
+
 ## Public Intelligence
 
 The public package includes a reviewed baseline so agents can still make conservative decisions when the cloud API is unavailable.

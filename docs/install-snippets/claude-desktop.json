@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "agent-security-lens": {
+      "command": "npx",
+      "args": ["-y", "agent-security-lens"],
+      "env": {
+        "ASL_API_URL": "https://agentsecuritylens-api.agentsecuritylens.workers.dev",
+        "ASL_MODE": "online"
+      }
+    }
+  }
+}
+
