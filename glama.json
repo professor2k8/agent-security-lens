@@ -1,0 +1,45 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": [
+    "professor2k8"
+  ],
+  "name": "agent-security-lens",
+  "description": "Safe-install and trust-check MCP for autonomous agents before they install MCPs, Skills or tools.",
+  "type": "mcp_server",
+  "status": "active",
+  "framework": "Model Context Protocol",
+  "tools": 10,
+  "transport": [
+    "stdio"
+  ],
+  "keywords": [
+    "agent-security",
+    "mcp-security",
+    "safe-install",
+    "trust-check",
+    "skill-security",
+    "tool-safety",
+    "security-audit",
+    "autonomous-agents"
+  ],
+  "features": {
+    "pre_install_review": {
+      "enabled": true,
+      "description": "Agents call review_before_install before installing MCPs, Skills or tools."
+    },
+    "decision_contract": {
+      "enabled": true,
+      "decisions": [
+        "allow",
+        "allow_with_restrictions",
+        "ask_user",
+        "avoid"
+      ]
+    },
+    "unknown_component_research": {
+      "enabled": true,
+      "description": "Unknown public components can be submitted for ASL research without sending private data."
+    }
+  }
+}
+

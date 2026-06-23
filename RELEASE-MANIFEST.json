@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
   "version": "0.1.4",
-  "generated_at": "2026-06-22T14:44:46.552Z",
+  "generated_at": "2026-06-23T15:06:40.896Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -254,6 +254,11 @@
       "path": "examples/openclaw-like/workspace/skills/browser-control/SKILL.md",
       "bytes": 224,
       "sha256": "003dd29edfdb95a22e2dee21b889c53f388c7188b4eb2b0e785d1fb7031a58f5"
+    },
+    {
+      "path": "glama.json",
+      "bytes": 1109,
+      "sha256": "4f9f78280c53f256e2020d114afaef357f0ee899f87443d63bccd2e01e3ef950"
     },
     {
       "path": "llms.txt",
