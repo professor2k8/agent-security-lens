@@ -2,9 +2,14 @@
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
   "version": "0.1.4",
-  "generated_at": "2026-06-23T15:06:40.896Z",
+  "generated_at": "2026-06-23T16:22:14.795Z",
   "source": "ASL verified public release exporter",
   "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 159,
+      "sha256": "78fb3128cefbfdc369a213140894c3ffb189cefe519569a0a6f06add6f4e160d"
+    },
     {
       "path": ".env.example",
       "bytes": 322,
@@ -64,6 +69,11 @@
       "path": "CONTRIBUTING.md",
       "bytes": 620,
       "sha256": "b74ec3539a56b9af93cb25e59cdcb75ef1c9125611552d4bd6f7764d283e8736"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 179,
+      "sha256": "b00c41e62cdc82eb1a40d9a9fd25024a482f6b6a36c54e05c33ce41353b08e9a"
     },
     {
       "path": "LICENSE",

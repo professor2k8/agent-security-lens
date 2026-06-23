@@ -1,0 +1,11 @@
+.git
+.agentsecuritylens
+.agentsecuritylens-test
+.asl-data-production-batch-20260615
+.npm-cache
+.release-worktree
+assessment-runs
+node_modules
+*.tgz
+*.log
+dist
