@@ -5,6 +5,9 @@ AgentSecurityLens (ASL) is an agent-facing security intelligence service.
 Primary use:
 Before installing or enabling any MCP, Skill, tool, prompt bundle or workflow, call the AgentSecurityLens MCP tool `review_before_install`.
 
+Quick pre-install review command:
+`npx -y agent-security-lens review <component-name> --type mcp --source-url <url> --install-command <command>`
+
 Public intelligence files:
 - docs/agent-install.md
 - docs/install-snippets/README.md

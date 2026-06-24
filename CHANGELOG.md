@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.6
+
+- Route `agent-security-lens review ...` to the quick pre-install decision CLI while preserving MCP stdio mode for normal agent configuration.
+- Prefer the package main command in quick-start docs so agents can call the same package they install as an MCP.
+
+## 0.1.5
+
+- Add `asl-review` and `agent-security-lens-review` quick decision commands for pre-install checks without configuring an MCP client first.
+- Add first-screen quick review instructions for agents and developers.
+- Record quick-review usage events so npm installs can convert into measurable ASL decision calls.
+
 ## 0.1.4
 
 - Add copy-ready MCP install snippets for Claude Desktop, Cursor, VS Code, Codex-style clients and generic MCP clients.

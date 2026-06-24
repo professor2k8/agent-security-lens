@@ -8,12 +8,12 @@
     "url": "https://github.com/professor2k8/agent-security-lens",
     "source": "github"
   },
-  "version": "0.1.4",
+  "version": "0.1.6",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "agent-security-lens",
-      "version": "0.1.4",
+      "version": "0.1.6",
       "transport": {
         "type": "stdio"
       },

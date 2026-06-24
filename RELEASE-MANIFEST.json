@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.4",
-  "generated_at": "2026-06-23T16:22:14.795Z",
+  "version": "0.1.6",
+  "generated_at": "2026-06-24T12:17:11.165Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -48,7 +48,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1316,
-      "sha256": "207a4751a1bce53409434134d14a9a7ee955aafe77aeb5c50c7448f832045675"
+      "sha256": "ccd53b1ecd798c344991cb136945a256b21e6b9929a594df08be8d4da4f9fcb3"
     },
     {
       "path": ".npmignore",
@@ -57,8 +57,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2051,
-      "sha256": "b236067b6a60d16ae7ffc080030dc4b4d6a41ba2035e0de4c0f81bf3fe05f013"
+      "bytes": 2641,
+      "sha256": "2ed80a454a044e14aaf185d0b8498bc3d9abaec6ae78159416ceacec9b68227c"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -87,8 +87,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6626,
-      "sha256": "b19f05cbc38747ca63ccbd40595621a4dd618fe644bfff9d18e33cf290e33d5a"
+      "bytes": 7239,
+      "sha256": "23bfccd78e24d3bcd671d8eb1ea3228d38577145580aa9c8239e26634908bc89"
     },
     {
       "path": "SECURITY.md",
@@ -97,8 +97,13 @@
     },
     {
       "path": "apps/mcp-server/agent-security-lens-mcp.mjs",
-      "bytes": 15239,
-      "sha256": "612a1c12ed4a646d9208e8393ac0964b89b6034f5559d32f23a9217f1ff37376"
+      "bytes": 15475,
+      "sha256": "b52fd8db2d26868d5403664420b631f08e7e1616b787b61644d79b647c1884e7"
+    },
+    {
+      "path": "bin/agent-security-lens-review.mjs",
+      "bytes": 7016,
+      "sha256": "a11cfd8a70882c7d4ba4aa3af58f184db1acbfa4aa1a68e08f77ca4c232278f3"
     },
     {
       "path": "bin/agent-security-lens.mjs",
@@ -272,13 +277,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 1991,
-      "sha256": "4bf6ae7fdd917f8d45e097e65fef32d7c051f500dfcd922be087eab74a3bfebe"
+      "bytes": 2137,
+      "sha256": "b54be6efb874b5972956313a3c436edcb1f236de1e700ce7557cee6d940d43f6"
     },
     {
       "path": "package.json",
-      "bytes": 2156,
-      "sha256": "dbe2016295ba12a8f38dbf441dd1f908414ceb06e98cc0b6580adf3576045b09"
+      "bytes": 2568,
+      "sha256": "a56f3b0f99b1ebb8fc1e36524dc250ba79632c290ad2471adc197c41277f8e44"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -408,7 +413,7 @@
     {
       "path": "server.json",
       "bytes": 1316,
-      "sha256": "207a4751a1bce53409434134d14a9a7ee955aafe77aeb5c50c7448f832045675"
+      "sha256": "ccd53b1ecd798c344991cb136945a256b21e6b9929a594df08be8d4da4f9fcb3"
     },
     {
       "path": "src/assessment/assess.mjs",

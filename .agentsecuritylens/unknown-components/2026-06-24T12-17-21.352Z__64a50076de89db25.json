@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
-  "id": "76cc483a2a5ddd00",
+  "id": "64a50076de89db25",
   "status": "queued",
-  "submitted_at": "2026-06-23T16:23:02.073Z",
+  "submitted_at": "2026-06-24T12:17:21.352Z",
   "source": "agent-security-mcp",
   "intelligence_state": "unknown",
   "component": {
@@ -55,7 +55,7 @@
     }
   },
   "research_task": {
-    "submission_id": "76cc483a2a5ddd00",
+    "submission_id": "64a50076de89db25",
     "status": "queued",
     "owner_team": "mcp-research-team",
     "next_agent_action": {

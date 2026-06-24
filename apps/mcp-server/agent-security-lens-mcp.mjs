@@ -17,6 +17,11 @@ const serverInfo = {
   version: "0.1.0"
 };
 
+if (process.argv[2] === "review" || process.argv[2] === "quick-review" || process.argv[2] === "--help" || process.argv[2] === "-h") {
+  await import("../../bin/agent-security-lens-review.mjs");
+  process.exit(process.exitCode || 0);
+}
+
 const tools = [
   {
     name: "get_install_policy",

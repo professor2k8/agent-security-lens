@@ -8,6 +8,21 @@ ASL is not a malware verdict tool. It returns observable risk signals, required 
 
 ## Agent Quick Install
 
+Try one pre-install decision first:
+
+```bash
+npx -y agent-security-lens review filesystem \
+  --type mcp \
+  --source-url https://github.com/modelcontextprotocol/servers \
+  --install-command "npx -y @modelcontextprotocol/server-filesystem ." \
+  --permission filesystem-read \
+  --permission filesystem-write
+```
+
+The command returns an agent-readable decision, trust score, risk signals, safe install plan, and whether automatic installation is allowed.
+
+If your shell does not expose npm temporary binaries correctly, use `npm install -g agent-security-lens` once, then run the same command without `npx -y`.
+
 Add ASL as a pre-install trust check MCP:
 
 ```json

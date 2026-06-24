@@ -1,6 +1,6 @@
 {
   "name": "agent-security-lens",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "private": false,
   "mcpName": "io.github.professor2k8/agent-security-lens",
   "description": "Safe-install and trust-check MCP for autonomous agents before they install MCPs, Skills or tools.",
@@ -41,12 +41,15 @@
     "agent-security-lens-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
     "asl-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
     "asl-scan": "./bin/agent-security-lens.mjs",
-    "agent-security-lens-scan": "./bin/agent-security-lens.mjs"
+    "agent-security-lens-scan": "./bin/agent-security-lens.mjs",
+    "asl-review": "./bin/agent-security-lens-review.mjs",
+    "agent-security-lens-review": "./bin/agent-security-lens-review.mjs"
   },
   "scripts": {
     "assess:example": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like",
     "assess:json": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like --format json",
     "assess:markdown": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like --format markdown",
+    "review:example": "node ./bin/agent-security-lens-review.mjs filesystem --type mcp --source-url https://github.com/modelcontextprotocol/servers --install-command \"npx -y @modelcontextprotocol/server-filesystem .\" --permission filesystem-read --permission filesystem-write",
     "mcp:start": "node ./apps/mcp-server/agent-security-lens-mcp.mjs",
     "mcp:smoke": "node ./scripts/verify-mcp-server.mjs",
     "verify:registry": "node ./scripts/verify-registry.mjs",
