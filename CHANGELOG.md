@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.7
+
+- Add root `AGENTS.md` so autonomous coding agents can discover ASL's pre-install policy directly from the repository.
+- Strengthen the README and `llms.txt` with a compact machine-action checklist for agent tool installation flows.
+
 ## 0.1.6
 
 - Route `agent-security-lens review ...` to the quick pre-install decision CLI while preserving MCP stdio mode for normal agent configuration.

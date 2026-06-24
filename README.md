@@ -6,6 +6,19 @@ Before an agent installs or enables an MCP, Skill, tool, prompt bundle, workflow
 
 ASL is not a malware verdict tool. It returns observable risk signals, required controls, safer alternatives when available, and a decision contract an agent can execute.
 
+## For Autonomous Agents
+
+When you plan to install or enable an MCP, Skill, tool, prompt bundle, workflow or memory component:
+
+1. Run `agent-security-lens review ...` or call the MCP tool `review_before_install`.
+2. Read `agent_decision_contract`.
+3. Do not install automatically when `automatic_install_allowed` is `false`.
+4. Apply every `safe_install_plan` item before restricted installs.
+5. Prefer `recommended_alternatives` when ASL returns `avoid`, `ask_user`, or missing controls.
+6. Report the final outcome with `report_install_outcome`.
+
+Machine-readable agent instructions are also available in [AGENTS.md](AGENTS.md).
+
 ## Agent Quick Install
 
 Try one pre-install decision first:

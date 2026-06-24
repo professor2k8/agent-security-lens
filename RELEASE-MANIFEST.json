@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.6",
-  "generated_at": "2026-06-24T12:17:11.165Z",
+  "version": "0.1.7",
+  "generated_at": "2026-06-24T12:50:23.177Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -48,7 +48,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1316,
-      "sha256": "ccd53b1ecd798c344991cb136945a256b21e6b9929a594df08be8d4da4f9fcb3"
+      "sha256": "3cf970a92c19c20fbe5fefee92567c51d17543eb97759c44868c44a437b42d0c"
     },
     {
       "path": ".npmignore",
@@ -56,9 +56,14 @@
       "sha256": "ff387a29e97fb85275d4e1ab382dc09fcd441a0ab57c8ea73a7f576ca6395e69"
     },
     {
+      "path": "AGENTS.md",
+      "bytes": 1973,
+      "sha256": "320aba3d74cdec74b59ff4607abbe1fb920728daca44986aea115c377c563412"
+    },
+    {
       "path": "CHANGELOG.md",
-      "bytes": 2641,
-      "sha256": "2ed80a454a044e14aaf185d0b8498bc3d9abaec6ae78159416ceacec9b68227c"
+      "bytes": 2885,
+      "sha256": "d56741889411dee507051c142ee4f0f8190339822b4ef854d9aa807950162793"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -87,8 +92,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7239,
-      "sha256": "23bfccd78e24d3bcd671d8eb1ea3228d38577145580aa9c8239e26634908bc89"
+      "bytes": 7872,
+      "sha256": "bc3369565c4dd316cf8c0faa988c1c03c8b6ac1791d2d72ad0d8b1e7a9b328d6"
     },
     {
       "path": "SECURITY.md",
@@ -277,13 +282,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 2137,
-      "sha256": "b54be6efb874b5972956313a3c436edcb1f236de1e700ce7557cee6d940d43f6"
+      "bytes": 2744,
+      "sha256": "6513087b9ad8a749c782077fe2c114f9d9e169304c2bf591e2b725271e486b91"
     },
     {
       "path": "package.json",
       "bytes": 2568,
-      "sha256": "a56f3b0f99b1ebb8fc1e36524dc250ba79632c290ad2471adc197c41277f8e44"
+      "sha256": "145efff93b3c7605596f123906630165ee61598a2000f3e4b8fca13ab4c36448"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -413,7 +418,7 @@
     {
       "path": "server.json",
       "bytes": 1316,
-      "sha256": "ccd53b1ecd798c344991cb136945a256b21e6b9929a594df08be8d4da4f9fcb3"
+      "sha256": "3cf970a92c19c20fbe5fefee92567c51d17543eb97759c44868c44a437b42d0c"
     },
     {
       "path": "src/assessment/assess.mjs",
