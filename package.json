@@ -1,6 +1,6 @@
 {
   "name": "agent-security-lens",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "mcpName": "io.github.professor2k8/agent-security-lens",
   "description": "Safe-install and trust-check MCP for autonomous agents before they install MCPs, Skills or tools.",

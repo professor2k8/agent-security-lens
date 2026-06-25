@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.7",
-  "generated_at": "2026-06-24T12:50:23.177Z",
+  "version": "0.1.8",
+  "generated_at": "2026-06-25T04:55:00.570Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -48,7 +48,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1316,
-      "sha256": "3cf970a92c19c20fbe5fefee92567c51d17543eb97759c44868c44a437b42d0c"
+      "sha256": "a9dee7dbc493a6d4ebf6ceadf67d569c41cd5c1e0b7b63addf715845ed1595d8"
     },
     {
       "path": ".npmignore",
@@ -62,8 +62,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2885,
-      "sha256": "d56741889411dee507051c142ee4f0f8190339822b4ef854d9aa807950162793"
+      "bytes": 3077,
+      "sha256": "24dc14cfab212aff8e76624a9783533823fde9205234f6c4b507b96d87d6c2e6"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -92,8 +92,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7872,
-      "sha256": "bc3369565c4dd316cf8c0faa988c1c03c8b6ac1791d2d72ad0d8b1e7a9b328d6"
+      "bytes": 8074,
+      "sha256": "4b7bd80bb553596693f5684341aeda4e61331e8f32c2f21fe0916edfefd521d3"
     },
     {
       "path": "SECURITY.md",
@@ -216,6 +216,11 @@
       "sha256": "828fdcd367057a3b5583a80dc095b5e5365ef5e5f947ccf6ba95d964a1f50403"
     },
     {
+      "path": "docs/public-intelligence/mcp-first-call-examples-v0.1.md",
+      "bytes": 5457,
+      "sha256": "758bccdb7f962089549bb1d97be6479eaa497a12207643fb70d00e9d024cd71f"
+    },
+    {
       "path": "docs/public-intelligence/top-mcp-security-signals-v0.1.md",
       "bytes": 11894,
       "sha256": "bd0cddfbb21bc55ec969df11e175fa0353ec4f855b86469bb7f971caf8ad6876"
@@ -282,13 +287,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 2744,
-      "sha256": "6513087b9ad8a749c782077fe2c114f9d9e169304c2bf591e2b725271e486b91"
+      "bytes": 2803,
+      "sha256": "8e15f959d9f2a24155b606136d4c53d7029e97d948904f8874e393e58541ea78"
     },
     {
       "path": "package.json",
       "bytes": 2568,
-      "sha256": "145efff93b3c7605596f123906630165ee61598a2000f3e4b8fca13ab4c36448"
+      "sha256": "8eb4b7416328821604b823bdb9f3676e46b00dfdd12733d64fc65b8a1623d376"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -418,7 +423,7 @@
     {
       "path": "server.json",
       "bytes": 1316,
-      "sha256": "3cf970a92c19c20fbe5fefee92567c51d17543eb97759c44868c44a437b42d0c"
+      "sha256": "a9dee7dbc493a6d4ebf6ceadf67d569c41cd5c1e0b7b63addf715845ed1595d8"
     },
     {
       "path": "src/assessment/assess.mjs",

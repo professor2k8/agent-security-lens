@@ -36,6 +36,10 @@ The command returns an agent-readable decision, trust score, risk signals, safe 
 
 If your shell does not expose npm temporary binaries correctly, use `npm install -g agent-security-lens` once, then run the same command without `npx -y`.
 
+More copy-ready calls:
+
+- [MCP first-call examples](docs/public-intelligence/mcp-first-call-examples-v0.1.md)
+
 Add ASL as a pre-install trust check MCP:
 
 ```json
@@ -73,6 +77,7 @@ The public package includes a reviewed baseline so agents can still make conserv
 - [Top MCP Security Signals v0.1](docs/public-intelligence/top-mcp-security-signals-v0.1.md)
 - [Top Skill Security Signals v0.1](docs/public-intelligence/top-skill-security-signals-v0.1.md)
 - [Agent Framework Install Decisions v0.1](docs/public-intelligence/agent-framework-install-decisions-v0.1.md)
+- [MCP First-Call Examples v0.1](docs/public-intelligence/mcp-first-call-examples-v0.1.md)
 
 The online ASL intelligence API serves the current expanded catalog. The npm package intentionally does not ship the complete private intelligence database.
 

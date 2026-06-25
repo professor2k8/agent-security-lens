@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8
+
+- Add copy-ready first-call examples for 10 common MCP install decisions.
+- Link first-call examples from README and `llms.txt` so agents can discover concrete ASL review commands.
+
 ## 0.1.7
 
 - Add root `AGENTS.md` so autonomous coding agents can discover ASL's pre-install policy directly from the repository.
