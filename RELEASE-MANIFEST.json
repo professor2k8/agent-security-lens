@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
   "version": "0.1.8",
-  "generated_at": "2026-06-25T04:55:00.570Z",
+  "generated_at": "2026-06-25T05:28:35.777Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -47,8 +47,8 @@
     },
     {
       "path": ".mcp/server.json",
-      "bytes": 1316,
-      "sha256": "a9dee7dbc493a6d4ebf6ceadf67d569c41cd5c1e0b7b63addf715845ed1595d8"
+      "bytes": 1348,
+      "sha256": "3c424c3bcb78aeeb10c5c300be095317012a9686147c9fd4640183d9e0f13020"
     },
     {
       "path": ".npmignore",
@@ -422,8 +422,8 @@
     },
     {
       "path": "server.json",
-      "bytes": 1316,
-      "sha256": "a9dee7dbc493a6d4ebf6ceadf67d569c41cd5c1e0b7b63addf715845ed1595d8"
+      "bytes": 1348,
+      "sha256": "3c424c3bcb78aeeb10c5c300be095317012a9686147c9fd4640183d9e0f13020"
     },
     {
       "path": "src/assessment/assess.mjs",
