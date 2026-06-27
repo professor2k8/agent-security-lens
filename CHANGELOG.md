@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+- Return agent-executable mitigation paths when no reviewed component alternative is available, without presenting mitigations as reviewed replacements.
+- Improve npm and MCP Registry discovery copy for `mcp security`, `trust check`, and `safe install` searches.
+- Keep `alternatives` limited to real component replacements while exposing mitigation counts in the agent decision contract.
+
 ## 0.1.9
 
 - Add `agent-security-lens doctor` so agents can check cloud reachability, local fallback coverage and queued telemetry before first use.

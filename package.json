@@ -1,9 +1,9 @@
 {
   "name": "agent-security-lens",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
   "mcpName": "io.github.professor2k8/agent-security-lens",
-  "description": "Safe-install and trust-check MCP for autonomous agents before they install MCPs, Skills or tools.",
+  "description": "MCP security trust-check server for autonomous agents: safe install decisions, risk signals, controls and alternatives before installing MCPs, Skills or tools.",
   "type": "module",
   "license": "Apache-2.0",
   "repository": {
@@ -30,7 +30,12 @@
     "security-audit",
     "tool-safety",
     "trust-score",
-    "agent-tools"
+    "agent-tools",
+    "mcp-server",
+    "mcp-scanner",
+    "mcp-trust",
+    "safe-mcp",
+    "autonomous-agent-security"
   ],
   "publishConfig": {
     "access": "public"

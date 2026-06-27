@@ -276,7 +276,8 @@ async function callTool(name, args = {}) {
           agent_decision_contract: "Boolean policy contract for automatic install, user confirmation, unknown submission, retry and reporting.",
           agent_actions: "Ordered action list the agent should execute around installation.",
           one_step_action: "Single highest-priority action for agents that need a compact answer.",
-          recommended_alternatives: "Structured alternative choices. Review each alternative with ASL before installing it.",
+          recommended_alternatives:
+            "Structured reviewed alternatives or mitigation paths. Review component alternatives with ASL before installing them, and apply mitigation paths before retrying restricted installs.",
           unknown_component: "Submission and retry instructions when ASL has no reviewed intelligence record."
         }
       }

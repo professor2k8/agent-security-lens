@@ -248,8 +248,9 @@ if (candidateCatalogAvailable) {
     candidateJson.intelligence_coverage?.source !== "monitored_catalog" ||
     candidateJson.decision !== "ask_user" ||
     candidateJson.agent_decision_contract?.research_status_required_before_retry !== true ||
-    candidateJson.recommended_alternatives?.length !== 0 ||
-    candidateJson.alternative_coverage?.status !== "not_applicable"
+    !candidateJson.recommended_alternatives?.every((item) => item.kind === "mitigation_path") ||
+    candidateJson.alternative_coverage?.status !== "mitigation_only" ||
+    candidateJson.alternatives?.length !== 0
   ) {
     console.error("MCP smoke failed: candidate intelligence path did not return expected contract");
     console.error(output || errorOutput);
@@ -269,8 +270,9 @@ if (candidateCatalogAvailable) {
     candidateJson.intelligence_coverage?.source !== "submitted_metadata_inference" ||
     candidateJson.agent_decision_contract?.blocks_install !== true ||
     candidateJson.agent_decision_contract?.research_status_required_before_retry !== true ||
-    candidateJson.recommended_alternatives?.length !== 0 ||
-    candidateJson.alternative_coverage?.status !== "not_applicable"
+    !candidateJson.recommended_alternatives?.every((item) => item.kind === "mitigation_path") ||
+    candidateJson.alternative_coverage?.status !== "mitigation_only" ||
+    candidateJson.alternatives?.length !== 0
   ) {
     console.error("MCP smoke failed: public fallback unknown-component path did not return expected contract");
     console.error(output || errorOutput);

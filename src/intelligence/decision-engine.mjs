@@ -552,6 +552,79 @@ function buildRecommendedAlternatives(alternatives = [], { type = "unknown" } = 
   });
 }
 
+function buildMitigationRecommendations({ risks = [], safeInstallPlan = [], type = "unknown", decision = "ask_user" } = {}) {
+  const recommendations = [];
+  const controls = new Set(safeInstallPlan);
+
+  if (risks.includes("filesystem-write") || risks.includes("filesystem-read")) {
+    recommendations.push({
+      id: "mitigation-workspace-scope",
+      name: "Use a scoped workspace or read-only mode first",
+      kind: "mitigation_path",
+      component_type: type,
+      action: "apply_controls_before_retry",
+      reason: "The requested component can access local files. Scope access before any install or tool enablement.",
+      controls: [
+        "Limit filesystem access to the current workspace or a temporary copy.",
+        "Prefer read-only access unless the task explicitly needs writes."
+      ].filter((item) => controls.has(item) || risks.includes("filesystem-read") || risks.includes("filesystem-write"))
+    });
+  }
+
+  if (risks.includes("shell-execution") || risks.includes("remote-code-install") || risks.includes("subprocess-spawn")) {
+    recommendations.push({
+      id: "mitigation-command-gate",
+      name: "Require command confirmation and pin the install source",
+      kind: "mitigation_path",
+      component_type: type,
+      action: "apply_controls_before_retry",
+      reason: "The install path can execute commands. Do not run it unattended.",
+      controls: [
+        "Do not run install commands automatically. Ask the user to approve the command first.",
+        "Pin package versions or commit SHAs before installation."
+      ]
+    });
+  }
+
+  if (risks.includes("browser-access")) {
+    recommendations.push({
+      id: "mitigation-dedicated-browser-profile",
+      name: "Use a dedicated browser profile without personal cookies",
+      kind: "mitigation_path",
+      component_type: type,
+      action: "apply_controls_before_retry",
+      reason: "Browser automation can expose sessions, cookies and personal browsing context.",
+      controls: ["Use a dedicated browser profile without personal cookies."]
+    });
+  }
+
+  if (risks.includes("network-access") || risks.includes("external-api") || risks.includes("remote-mcp-endpoint")) {
+    recommendations.push({
+      id: "mitigation-network-allowlist",
+      name: "Allowlist remote endpoints before enabling network access",
+      kind: "mitigation_path",
+      component_type: type,
+      action: "apply_controls_before_retry",
+      reason: "Network-capable components can send data to remote services.",
+      controls: ["Allowlist remote endpoints before enabling the component."]
+    });
+  }
+
+  if (!recommendations.length && decision !== "allow") {
+    recommendations.push({
+      id: "mitigation-review-source-version",
+      name: "Record exact source and version before installation",
+      kind: "mitigation_path",
+      component_type: type,
+      action: "apply_controls_before_retry",
+      reason: "ASL cannot recommend automatic installation without enough reviewed context.",
+      controls: ["Install only from a reviewed source and record the exact version."]
+    });
+  }
+
+  return recommendations.slice(0, 4);
+}
+
 function buildOneStepAction({ decision, safeInstallPlan, alternatives, known }) {
   if (decision === "avoid") {
     const replacement = alternatives[0] ? ` Prefer reviewed alternative: ${alternatives[0]}.` : "";
@@ -593,7 +666,7 @@ function buildOneStepAction({ decision, safeInstallPlan, alternatives, known }) 
   };
 }
 
-function buildAgentDecisionContract({ decision, risks, known, input, safeInstallPlan, alternatives }) {
+function buildAgentDecisionContract({ decision, risks, known, input, safeInstallPlan, alternatives, mitigationRecommendations = [] }) {
   const cataloged = Boolean(known?.catalog);
   const reasons = blockingReasons({ decision, risks, known });
   return {
@@ -629,7 +702,8 @@ function buildAgentDecisionContract({ decision, risks, known, input, safeInstall
       install_command: input.install_command || null
     },
     safe_install_plan_required: decision === "allow_with_restrictions" ? safeInstallPlan : [],
-    recommended_alternative_count: alternatives.length
+    recommended_alternative_count: alternatives.length,
+    recommended_mitigation_count: mitigationRecommendations.length
   };
 }
 
@@ -729,12 +803,28 @@ export function buildInstallDecision({
   const alternatives = recommendedAlternativeRecords.map((alternative) =>
     typeof alternative === "string" ? alternative : alternative.name
   );
+  const mitigationRecommendations = recommendedAlternativeRecords.length
+    ? []
+    : buildMitigationRecommendations({
+        risks,
+        safeInstallPlan,
+        type: componentType,
+        decision
+      });
   const alternativeCoverage = strictReviewed
     ? alternativeCoverageFor({
         componentId: known.id,
         graph: recommendationGraph,
         alternatives: graphAlternatives
       })
+    : mitigationRecommendations.length
+      ? {
+          status: "mitigation_only",
+          reviewed_alternative_count: 0,
+          mitigation_count: mitigationRecommendations.length,
+          reason: "No reviewed component alternative is available for this decision. ASL returns mitigation paths instead.",
+          graph_version: recommendationGraph.version || null
+        }
     : {
         status: "not_applicable",
         reviewed_alternative_count: 0,
@@ -747,7 +837,8 @@ export function buildInstallDecision({
     known,
     input,
     safeInstallPlan,
-    alternatives
+    alternatives,
+    mitigationRecommendations
   });
   const agentActions = buildAgentActions({ decision, risks, safeInstallPlan, alternatives, known, input });
 
@@ -779,9 +870,12 @@ export function buildInstallDecision({
     required_user_confirmation: ["ask_user", "avoid"].includes(decision),
     safe_install_plan: safeInstallPlan,
     alternatives,
-    recommended_alternatives: buildRecommendedAlternatives(recommendedAlternativeRecords, {
-      type: componentType
-    }),
+    recommended_alternatives: [
+      ...buildRecommendedAlternatives(recommendedAlternativeRecords, {
+        type: componentType
+      }),
+      ...mitigationRecommendations
+    ],
     alternative_coverage: alternativeCoverage,
     next_action: nextActionFor(decision),
     one_step_action: buildOneStepAction({ decision, safeInstallPlan, alternatives, known }),

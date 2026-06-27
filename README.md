@@ -1,10 +1,10 @@
 # AgentSecurityLens
 
-AgentSecurityLens (ASL) is a security intelligence MCP for autonomous agents.
+AgentSecurityLens (ASL) is an MCP security trust-check server for autonomous agents.
 
-Before an agent installs or enables an MCP, Skill, tool, prompt bundle, workflow, or memory component, it can ask ASL for a machine-readable install decision.
+Before an agent installs or enables an MCP, Skill, tool, prompt bundle, workflow, or memory component, it can ask ASL for a machine-readable safe-install decision.
 
-ASL is not a malware verdict tool. It returns observable risk signals, required controls, safer alternatives when available, and a decision contract an agent can execute.
+ASL is not a malware verdict tool. It returns observable risk signals, required controls, safer alternatives or mitigation paths, and a decision contract an agent can execute.
 
 ## For Autonomous Agents
 

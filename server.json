@@ -1,19 +1,19 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.professor2k8/agent-security-lens",
-  "title": "Agent Security Lens (AgentSecurityLens)",
-  "description": "Safe-install and trust-check MCP for agents before installing MCPs, Skills or tools.",
+  "title": "AgentSecurityLens MCP Security Trust Check",
+  "description": "MCP security trust-check for agents before installing MCPs, Skills or tools.",
   "status": "active",
   "repository": {
     "url": "https://github.com/professor2k8/agent-security-lens",
     "source": "github"
   },
-  "version": "0.1.9",
+  "version": "0.1.10",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "agent-security-lens",
-      "version": "0.1.9",
+      "version": "0.1.10",
       "transport": {
         "type": "stdio"
       },
