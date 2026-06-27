@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.9
+
+- Add `agent-security-lens doctor` so agents can check cloud reachability, local fallback coverage and queued telemetry before first use.
+- Fix cloud review normalization so valid ASL Cloud install decisions are accepted instead of falling back to local mode.
+- Resolve common GitHub monorepo URLs and install commands, including `modelcontextprotocol/servers/.../filesystem`, to canonical known components.
+- Canonicalize cloud component display names on the client so agent-facing output uses stable component names.
+- Improve operations metrics by tracking explicit npm daily ranges instead of relying only on cached point windows.
+
 ## 0.1.8
 
 - Add copy-ready first-call examples for 10 common MCP install decisions.

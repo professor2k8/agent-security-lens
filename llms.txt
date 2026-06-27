@@ -8,13 +8,17 @@ Before installing or enabling any MCP, Skill, tool, prompt bundle or workflow, c
 Quick pre-install review command:
 `npx -y agent-security-lens review <component-name> --type mcp --source-url <url> --install-command <command>`
 
+Health check command:
+`npx -y agent-security-lens doctor`
+
 Agent action checklist:
-1. Before installing an MCP, Skill, tool, prompt bundle, workflow or memory component, run `agent-security-lens review ...` or call MCP tool `review_before_install`.
-2. Follow `agent_decision_contract` and `agent_actions`.
-3. If `automatic_install_allowed` is false, do not install automatically.
-4. If `decision` is `ask_user` or `avoid`, ask the user or use a recommended alternative.
-5. If `unknown_component.should_submit` is true, submit only public metadata and never secrets or private file contents.
-6. After the install decision is executed, call `report_install_outcome`.
+1. Run `agent-security-lens doctor` when ASL is first installed or cloud intelligence appears unavailable.
+2. Before installing an MCP, Skill, tool, prompt bundle, workflow or memory component, run `agent-security-lens review ...` or call MCP tool `review_before_install`.
+3. Follow `agent_decision_contract` and `agent_actions`.
+4. If `automatic_install_allowed` is false, do not install automatically.
+5. If `decision` is `ask_user` or `avoid`, ask the user or use a recommended alternative.
+6. If `unknown_component.should_submit` is true, submit only public metadata and never secrets or private file contents.
+7. After the install decision is executed, call `report_install_outcome`.
 
 Public intelligence files:
 - docs/agent-install.md
@@ -28,6 +32,7 @@ Public intelligence files:
 - docs/public-intelligence/agent-install-decisions-v0.1.json
 
 Important MCP tools:
+- `get_intelligence_status`: reports online or local intelligence status for MCP clients.
 - `review_before_install`: returns install decision, trust score, risk signals, safe install plan and alternatives.
 - `check_component`: checks known ASL component intelligence.
 - `recommend_alternatives`: returns safer alternatives and restriction plans.

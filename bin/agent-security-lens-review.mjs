@@ -13,6 +13,8 @@ Usage:
              [--submit-if-unknown] [--format console|json]
 
 Examples:
+  agent-security-lens doctor
+
   asl-review filesystem --type mcp --source-url https://github.com/modelcontextprotocol/servers \\
     --install-command "npx -y @modelcontextprotocol/server-filesystem ." \\
     --permission filesystem-read --permission filesystem-write

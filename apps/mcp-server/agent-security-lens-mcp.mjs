@@ -2,6 +2,7 @@
 
 import { assess } from "../../src/assessment/assess.mjs";
 import { discoverTargets } from "../../src/assessment/discover-targets.mjs";
+import { renderDoctorConsole, runDoctor } from "../../src/intelligence/doctor.mjs";
 import { apiEndpoints, cloudIntelligenceEnabled, queryCloudStatus } from "../../src/intelligence/cloud-client.mjs";
 import {
   getResearchStatus,
@@ -17,8 +18,20 @@ const serverInfo = {
   version: "0.1.0"
 };
 
+if (process.argv[2] === "doctor") {
+  const report = await runDoctor();
+  if (process.argv.includes("--format") && process.argv[process.argv.indexOf("--format") + 1] === "json") {
+    console.log(JSON.stringify(report, null, 2));
+  } else {
+    console.log(renderDoctorConsole(report));
+  }
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  process.exit(0);
+}
+
 if (process.argv[2] === "review" || process.argv[2] === "quick-review" || process.argv[2] === "--help" || process.argv[2] === "-h") {
   await import("../../bin/agent-security-lens-review.mjs");
+  await new Promise((resolve) => setTimeout(resolve, 100));
   process.exit(process.exitCode || 0);
 }
 

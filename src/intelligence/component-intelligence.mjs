@@ -55,7 +55,7 @@ function withResolution(review, resolution) {
 }
 
 function normalizeCloudReview(cloudData, input, cloudResult) {
-  const review = cloudData?.result || cloudData?.decision || cloudData;
+  const review = cloudData?.result || (typeof cloudData?.decision === "object" ? cloudData.decision : null) || cloudData;
   if (!review || typeof review !== "object") return null;
   if (!review.decision || !review.trust_score || !Array.isArray(review.risk_signals)) return null;
   return withResolution(
@@ -107,6 +107,31 @@ function normalizeCloudReview(cloudData, input, cloudResult) {
   );
 }
 
+async function canonicalizeCloudReview(review, input = {}) {
+  try {
+    const database = await loadComponentDatabase();
+    const localKnown =
+      database.components.find((component) => component.id && component.id === review.component?.id) ||
+      findKnownComponentRecord(input, database.components);
+    const currentName = review.component?.name || "";
+    const genericOrUrlName = /^https?:\/\//i.test(currentName) || /^(planned-install|install|component|unknown|tool|mcp|skill)$/i.test(currentName);
+    if (localKnown?.name && genericOrUrlName) {
+      return {
+        ...review,
+        component: {
+          ...review.component,
+          name: localKnown.name,
+          source_url: review.component?.source_url || localKnown.source_url || null,
+          full_name: review.component?.full_name || localKnown.aliases?.[1] || null
+        }
+      };
+    }
+  } catch {
+    // Cloud decisions remain usable even if local canonicalization is unavailable.
+  }
+  return review;
+}
+
 async function buildLocalReview(input = {}, fallbackReason = null) {
   const database = await loadComponentDatabase();
   const candidates = await loadCandidateCatalog();
@@ -128,7 +153,7 @@ export async function reviewBeforeInstall(input = {}) {
     const cloudResult = await queryCloudReview(input);
     if (cloudResult.ok) {
       const normalized = normalizeCloudReview(cloudResult.data, input, cloudResult);
-      if (normalized) return normalized;
+      if (normalized) return canonicalizeCloudReview(normalized, input);
     }
     return buildLocalReview(input, cloudResult.reason || "cloud_result_unusable");
   }

@@ -1,6 +1,6 @@
 {
   "name": "agent-security-lens",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "mcpName": "io.github.professor2k8/agent-security-lens",
   "description": "Safe-install and trust-check MCP for autonomous agents before they install MCPs, Skills or tools.",
@@ -36,14 +36,14 @@
     "access": "public"
   },
   "bin": {
-    "agent-security-lens": "./apps/mcp-server/agent-security-lens-mcp.mjs",
-    "asl": "./apps/mcp-server/agent-security-lens-mcp.mjs",
-    "agent-security-lens-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
-    "asl-mcp": "./apps/mcp-server/agent-security-lens-mcp.mjs",
-    "asl-scan": "./bin/agent-security-lens.mjs",
-    "agent-security-lens-scan": "./bin/agent-security-lens.mjs",
-    "asl-review": "./bin/agent-security-lens-review.mjs",
-    "agent-security-lens-review": "./bin/agent-security-lens-review.mjs"
+    "agent-security-lens": "apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl": "apps/mcp-server/agent-security-lens-mcp.mjs",
+    "agent-security-lens-mcp": "apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl-mcp": "apps/mcp-server/agent-security-lens-mcp.mjs",
+    "asl-scan": "bin/agent-security-lens.mjs",
+    "agent-security-lens-scan": "bin/agent-security-lens.mjs",
+    "asl-review": "bin/agent-security-lens-review.mjs",
+    "agent-security-lens-review": "bin/agent-security-lens-review.mjs"
   },
   "scripts": {
     "assess:example": "node ./bin/agent-security-lens.mjs assess ./examples/openclaw-like --profile openclaw-like",

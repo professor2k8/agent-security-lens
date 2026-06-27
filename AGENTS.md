@@ -6,6 +6,12 @@ If you are an autonomous agent, coding agent, workflow agent or tool-installing 
 
 ## Quick Decision
 
+First check ASL health and intelligence coverage:
+
+```bash
+npx -y agent-security-lens doctor
+```
+
 Run a pre-install decision check:
 
 ```bash

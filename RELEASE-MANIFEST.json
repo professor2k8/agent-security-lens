@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0",
   "package": "agent-security-lens",
-  "version": "0.1.8",
-  "generated_at": "2026-06-25T05:38:26.947Z",
+  "version": "0.1.9",
+  "generated_at": "2026-06-27T09:18:21.016Z",
   "source": "ASL verified public release exporter",
   "files": [
     {
@@ -48,7 +48,7 @@
     {
       "path": ".mcp/server.json",
       "bytes": 1303,
-      "sha256": "9a5cd3274b10a7b1f95cb3945ca34ecc0c727369f9700ec94463d9c66dddf9f9"
+      "sha256": "0ffe3bff5b51969977aa55a867698b72cdf7d1f3bd1b14c267d7979d5da92cb5"
     },
     {
       "path": ".npmignore",
@@ -57,13 +57,13 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 1973,
-      "sha256": "320aba3d74cdec74b59ff4607abbe1fb920728daca44986aea115c377c563412"
+      "bytes": 2071,
+      "sha256": "2acf50a851a3ca8ec275f8c1bbdb198be44e519a9956a615136f8b4215fc51b8"
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 3077,
-      "sha256": "24dc14cfab212aff8e76624a9783533823fde9205234f6c4b507b96d87d6c2e6"
+      "bytes": 3723,
+      "sha256": "72baedc3dca9c034ed74d793c9ebb3df7109f595f31d6633651d6327fb7b801c"
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -92,8 +92,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8074,
-      "sha256": "4b7bd80bb553596693f5684341aeda4e61331e8f32c2f21fe0916edfefd521d3"
+      "bytes": 8298,
+      "sha256": "6a5a2f3afe1e5a606b953ca0fe224b0426466add17937962676c3cf62efb6931"
     },
     {
       "path": "SECURITY.md",
@@ -102,13 +102,13 @@
     },
     {
       "path": "apps/mcp-server/agent-security-lens-mcp.mjs",
-      "bytes": 15475,
-      "sha256": "b52fd8db2d26868d5403664420b631f08e7e1616b787b61644d79b647c1884e7"
+      "bytes": 15992,
+      "sha256": "d274f8a2973b66cfaa215e0c614017027836e6619c8ee842ba0be5399ce84f60"
     },
     {
       "path": "bin/agent-security-lens-review.mjs",
-      "bytes": 7016,
-      "sha256": "a11cfd8a70882c7d4ba4aa3af58f184db1acbfa4aa1a68e08f77ca4c232278f3"
+      "bytes": 7046,
+      "sha256": "49850a23241b275530b41a75068f1511b004d6dc8f55047e02ba9b616536c151"
     },
     {
       "path": "bin/agent-security-lens.mjs",
@@ -287,13 +287,13 @@
     },
     {
       "path": "llms.txt",
-      "bytes": 2803,
-      "sha256": "8e15f959d9f2a24155b606136d4c53d7029e97d948904f8874e393e58541ea78"
+      "bytes": 3059,
+      "sha256": "74052dfc82b3e3b36752a3d76039fa3e248f4afec0f3bb1bd1fe6505edbda5a0"
     },
     {
       "path": "package.json",
-      "bytes": 2568,
-      "sha256": "8eb4b7416328821604b823bdb9f3676e46b00dfdd12733d64fc65b8a1623d376"
+      "bytes": 2552,
+      "sha256": "36ad01613c24aac0493ae2259a62762b16f521464cfc04104bf724476fe65843"
     },
     {
       "path": "profiles/generic-agent/profile.json",
@@ -412,8 +412,8 @@
     },
     {
       "path": "scripts/verify-mcp-server.mjs",
-      "bytes": 9573,
-      "sha256": "acc6e8b27c48a8fc3d1804f739f0755ed4104a408115c53fefc9338d3f91698b"
+      "bytes": 10549,
+      "sha256": "8409444a8c52c3cd9860ad70be9fd29e8d31e05eff4c5f3dbd88eeefa6364f1a"
     },
     {
       "path": "scripts/verify-registry.mjs",
@@ -423,7 +423,7 @@
     {
       "path": "server.json",
       "bytes": 1303,
-      "sha256": "9a5cd3274b10a7b1f95cb3945ca34ecc0c727369f9700ec94463d9c66dddf9f9"
+      "sha256": "0ffe3bff5b51969977aa55a867698b72cdf7d1f3bd1b14c267d7979d5da92cb5"
     },
     {
       "path": "src/assessment/assess.mjs",
@@ -457,13 +457,18 @@
     },
     {
       "path": "src/intelligence/component-intelligence.mjs",
-      "bytes": 14214,
-      "sha256": "f8987fa64abd0a89288a6b2d79670b0fd2666ac8a7ccd13a9fa94e7e5d3627d3"
+      "bytes": 15288,
+      "sha256": "11c887108c13fd7f303b3667818875616b7b31516fe417bcb92334c9895171d2"
     },
     {
       "path": "src/intelligence/decision-engine.mjs",
-      "bytes": 30122,
-      "sha256": "b0a7b7cf27cdbbd41b2dc7e2805c8f43919adc13c53de5ceee7521f3574ff342"
+      "bytes": 32292,
+      "sha256": "97c75f4225175b67aa75e1e46a3c87a0594dd19e9de18790a1f5b05a49be8e01"
+    },
+    {
+      "path": "src/intelligence/doctor.mjs",
+      "bytes": 3564,
+      "sha256": "fb9223d83598838b38c48f1b5ea0b61788d1dbe7ef0336b25bb4b60262dc82d5"
     },
     {
       "path": "src/intelligence/finding-context.mjs",

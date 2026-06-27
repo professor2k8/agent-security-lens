@@ -2,11 +2,14 @@
 
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 
+const localQueueDir = await mkdtemp(join(tmpdir(), "asl-mcp-smoke-"));
 const child = spawn(process.execPath, ["./apps/mcp-server/agent-security-lens-mcp.mjs"], {
   cwd: process.cwd(),
-  env: { ...process.env, ASL_MODE: "local" },
+  env: { ...process.env, ASL_MODE: "local", ASL_LOCAL_QUEUE_DIR: localQueueDir },
   stdio: ["pipe", "pipe", "pipe"]
 });
 
@@ -107,6 +110,18 @@ send({
     }
   }
 });
+send({
+  jsonrpc: "2.0",
+  id: 9,
+  method: "tools/call",
+  params: {
+    name: "review_before_install",
+    arguments: {
+      component_name: "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      component_type: "mcp"
+    }
+  }
+});
 
 const responseDeadline = Date.now() + 5000;
 while (Date.now() < responseDeadline) {
@@ -122,7 +137,7 @@ while (Date.now() < responseDeadline) {
         }
       })
   );
-  if ([1, 2, 3, 4, 5, 6, 7, 8].every((id) => responseIds.has(id))) break;
+  if ([1, 2, 3, 4, 5, 6, 7, 8, 9].every((id) => responseIds.has(id))) break;
   await new Promise((resolve) => setTimeout(resolve, 50));
 }
 child.kill();
@@ -189,6 +204,18 @@ if (!reviewJson.one_step_action || reviewJson.one_step_action.action_type !== "a
 }
 if (!reviewJson.agent_actions?.some((action) => action.id === "report-install-outcome" && action.tool === "report_install_outcome")) {
   console.error("MCP smoke failed: agent action lifecycle did not require outcome reporting");
+  console.error(output || errorOutput);
+  process.exit(1);
+}
+
+const urlReview = lines.find((line) => line.id === 9);
+const urlReviewJson = JSON.parse(urlReview?.result?.content?.[0]?.text || "{}");
+if (
+  urlReviewJson.component?.id !== "mcp-filesystem" ||
+  urlReviewJson.component?.name !== "filesystem" ||
+  urlReviewJson.component?.known !== true
+) {
+  console.error("MCP smoke failed: GitHub monorepo URL did not resolve to canonical filesystem component");
   console.error(output || errorOutput);
   process.exit(1);
 }
@@ -276,3 +303,4 @@ if (!feedbackText.includes('"source": "local_fallback"') && !feedbackText.includ
 }
 
 console.log("mcp server: tools/list and review_before_install checked");
+await rm(localQueueDir, { recursive: true, force: true });

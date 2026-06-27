@@ -14,15 +14,69 @@ export function unique(items) {
   return [...new Set(items.filter(Boolean))];
 }
 
-function aliasMatchesInput(alias, input = {}) {
-  const normalizedAlias = normalizeText(alias).trim();
-  if (!normalizedAlias) return false;
-  const exactFields = [
+function normalizedUrlParts(value) {
+  const text = String(value || "").trim();
+  if (!/^https?:\/\//i.test(text)) return null;
+  try {
+    const url = new URL(text);
+    const pathParts = url.pathname.split("/").filter(Boolean);
+    return {
+      host: url.hostname.toLowerCase(),
+      pathParts,
+      owner: pathParts[0] || null,
+      repo: pathParts[1] || null,
+      tail: pathParts.at(-1) || null
+    };
+  } catch {
+    return null;
+  }
+}
+
+function extractPackageTokens(value) {
+  const text = String(value || "");
+  const tokens = [];
+  const scoped = text.matchAll(/@[a-z0-9._-]+\/[a-z0-9._-]+/gi);
+  for (const match of scoped) tokens.push(match[0]);
+  const npxLike = text.matchAll(/\b(?:npx|uvx|pnpm\s+dlx|yarn\s+dlx)\s+(?:-y\s+)?([a-z0-9._-]+\/[a-z0-9._-]+|[a-z0-9._-]+)/gi);
+  for (const match of npxLike) tokens.push(match[1]);
+  return tokens;
+}
+
+function derivedInputTerms(input = {}) {
+  const terms = [
     input.component_name,
     input.name,
     input.package_name,
-    input.registry
-  ].map((item) => normalizeText(item).trim());
+    input.registry,
+    ...extractPackageTokens(input.component_name),
+    ...extractPackageTokens(input.install_command)
+  ];
+
+  for (const value of [input.component_name, input.source_url]) {
+    const parsed = normalizedUrlParts(value);
+    if (!parsed) continue;
+    const { host, owner, repo, tail, pathParts } = parsed;
+    if (owner && repo) {
+      terms.push(`${owner}/${repo}`, `https://${host}/${owner}/${repo}`);
+    }
+    if (tail) {
+      terms.push(tail);
+      if (repo === "servers" && owner === "modelcontextprotocol") {
+        terms.push(`server-${tail}`, `@modelcontextprotocol/server-${tail}`, `modelcontextprotocol/server-${tail}`);
+      }
+      if (repo === "skills" && pathParts.includes("skills")) {
+        terms.push(tail);
+      }
+    }
+  }
+
+  return unique(terms.map((item) => normalizeText(item).trim()).filter(Boolean));
+}
+
+function aliasMatchesInput(alias, input = {}) {
+  const normalizedAlias = normalizeText(alias).trim();
+  if (!normalizedAlias) return false;
+  const exactFields = derivedInputTerms(input);
   if (exactFields.includes(normalizedAlias)) return true;
   if (normalizedAlias.length < 5) return false;
 
@@ -41,6 +95,14 @@ function aliasMatchesInput(alias, input = {}) {
     input.registry
   ]);
   return searchableText.includes(normalizedAlias);
+}
+
+function canonicalComponentName(input = {}, known = null) {
+  const inputName = input.component_name || input.name || null;
+  const looksLikeUrl = /^https?:\/\//i.test(String(inputName || ""));
+  const genericInputName = /^(planned-install|install|component|unknown|tool|mcp|skill)$/i.test(String(inputName || ""));
+  if (known?.name && (!inputName || looksLikeUrl || genericInputName)) return known.name;
+  return inputName || known?.name || null;
 }
 
 const EVALUATION_MODEL_VERSION = "asl-safety-standard@0.2.0";
@@ -702,7 +764,7 @@ export function buildInstallDecision({
       cataloged: Boolean(candidate),
       intelligence_state: intelligenceState,
       id: known?.id || null,
-      name: input.component_name || input.name || known?.name || null,
+      name: canonicalComponentName(input, known),
       type: input.component_type || input.type || known?.type || "unknown",
       source_url: input.source_url || known?.source_url || null,
       full_name: known?.aliases?.[1] || null,

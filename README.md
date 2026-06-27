@@ -21,6 +21,12 @@ Machine-readable agent instructions are also available in [AGENTS.md](AGENTS.md)
 
 ## Agent Quick Install
 
+Check whether ASL can reach online intelligence and what local fallback is available:
+
+```bash
+npx -y agent-security-lens doctor
+```
+
 Try one pre-install decision first:
 
 ```bash
@@ -132,6 +138,7 @@ Never submit private source code, secrets, tokens, cookies, or file contents.
 ## MCP Tools
 
 - `get_install_policy`: returns the current Agent execution policy.
+- `get_intelligence_status`: reports online or local intelligence status for MCP clients.
 - `review_before_install`: evaluates a proposed component and installation context.
 - `check_component`: retrieves known component intelligence.
 - `recommend_alternatives`: returns evidence-backed alternatives and mitigations.
